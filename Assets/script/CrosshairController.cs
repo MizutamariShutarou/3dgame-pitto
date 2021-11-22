@@ -19,14 +19,13 @@ public class CrosshairController : MonoBehaviour
     }
     void OnEnable()
     {
-        // マウスカーソルを消すには、以下の行をアンコメントする
+        // マウスカーソルを消す
         Cursor.visible = false;
     }
 
     void OnDisable()
     {
         Cursor.visible = true;
-
     }
     void Update()
     {
@@ -71,9 +70,9 @@ public class CrosshairController : MonoBehaviour
                 //GameObject get = hit.collider.gameObject;
 
                 Vector3 v = m_player.transform.position - m_wall.transform.position;
-                float angle = Mathf.Atan2(v.x, v.z) * Mathf.Rad2Deg;
-                float angle2 = Mathf.Atan2(v.x, v.y) * Mathf.Rad2Deg;
-                float angle3 = Mathf.Atan2(v.y, v.z) * Mathf.Rad2Deg;
+                float angle = Mathf.Atan2(v.x, v.z) * Mathf.Rad2Deg;//x,zの角度からyを取得
+                float angle2 = Mathf.Atan2(v.x, v.y) * Mathf.Rad2Deg;//xとyの角度からzを取得
+                float angle3 = Mathf.Atan2(v.y, v.z) * Mathf.Rad2Deg;//yとzの角度からｘを取得
                 Quaternion q = Quaternion.Euler(angle3, angle, angle2);
                 m_player.transform.localRotation = q;
             }

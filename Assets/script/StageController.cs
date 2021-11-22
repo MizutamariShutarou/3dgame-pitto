@@ -9,7 +9,6 @@ public class StageController : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        
         m_stageRb = GetComponent<Rigidbody>();
     }
 
@@ -17,10 +16,5 @@ public class StageController : MonoBehaviour
     void Update()
     {
         m_stageRb.velocity = m_stageRb.transform.position.normalized * m_stageSpeed;
-        if(transform.position.x < -100)
-        {
-            transform.Rotate(0, 90, 0);
-            
-        }
     }
 }

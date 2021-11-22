@@ -9,6 +9,7 @@ public class PlayerController : MonoBehaviour
     [SerializeField] GameObject m_bullet = default;
     [SerializeField] float m_bulletSpeed;
     [SerializeField] GameObject m_muzzle = default;
+    //[SerializeField] GameObject m_crosshair = default;
     [SerializeField] int m_maxBulletCount = 0;
     int m_bulletCount = 10;
     
@@ -16,6 +17,7 @@ public class PlayerController : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
+        //　課題　具体的な数字→メンバー変数で作り直してシステムを組み立てる
         m_rb = GetComponent<Rigidbody>();
     }
 
@@ -37,13 +39,12 @@ public class PlayerController : MonoBehaviour
     {
         if (Input.GetButtonDown("Fire1") && m_bulletCount > 0)
         {
-
             Rigidbody obj = Instantiate(m_bullet, m_muzzle.transform.position, Quaternion.identity).GetComponent<Rigidbody>();
             obj.velocity = transform.rotation * Vector3.forward * m_bulletSpeed;
             m_bulletCount--;
         }
     }
-    void Fire2()
+    void Fire2()//リロード
     {
         if (Input.GetButtonDown("Fire2"))
         {
