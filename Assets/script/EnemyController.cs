@@ -32,8 +32,9 @@ public class EnemyController : MonoBehaviour
         StartCoroutine("BulletShot");
 
         DOTween.Sequence()
-            .Append(this.transform.DOMoveX(m_doMoveXPos, m_doMoveXTime).SetDelay(m_firstDelayTime))
+            .Append(this.transform.gameObject.GetComponent<Rigidbody>().DOMoveX(m_doMoveXPos, m_doMoveXTime).SetDelay(m_firstDelayTime))
             .Join(this.transform.DOMoveY(m_doMoveY, m_doMoveYTime).SetDelay(m_secondDelayTime).SetLink(this.gameObject));
+            
 
     }
 
@@ -52,8 +53,7 @@ public class EnemyController : MonoBehaviour
     {
         while (true)
         {
-            //if (!isOutOfRange) yield break;
-            Debug.Log("コルーチンスタート"); //　課題　画面内に敵オブジェクトが現れたらコルーチン開始にしたい
+            //Debug.Log("コルーチンスタート"); //　課題　画面内に敵オブジェクトが現れたらコルーチン開始にしたい
             yield return new WaitForSeconds(m_waitTime);
             Rigidbody obj = Instantiate(m_enemyBullet, transform.position, Quaternion.identity).GetComponent<Rigidbody>();
             obj.velocity = transform.rotation * Vector3.forward * m_enemyBulletSpeed;
