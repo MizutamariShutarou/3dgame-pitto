@@ -7,11 +7,14 @@ public class EnemyController : MonoBehaviour
     [SerializeField] float m_enemySpeed = 0f;
     //[SerializeField] float m_enemyHp = 5f;
     [SerializeField] float m_withinRange = 0;
+    [SerializeField] float m_firstDoMoveYPos = 0;
+    [SerializeField] float m_firstDoMoveYTime = 0;
     [SerializeField] float m_doMoveXPos = 0;
     [SerializeField] float m_doMoveXTime = 0;
     [SerializeField] float m_waitTime = 0;
     [SerializeField] float m_firstDelayTime = 0;
     [SerializeField] float m_secondDelayTime = 0;
+    [SerializeField] float m_thirdDelayTime = 0;
     [SerializeField] float m_doMoveY = 0;
     [SerializeField] float m_doMoveYTime = 0;
     [SerializeField] float m_destroyPos = 0;
@@ -22,6 +25,12 @@ public class EnemyController : MonoBehaviour
     bool isOutOfRange = true;
 
     Rigidbody m_enemyRb = default;
+
+
+
+
+
+
     //Start is called before the first frame update
     void Start()
     {
@@ -32,10 +41,9 @@ public class EnemyController : MonoBehaviour
         StartCoroutine("BulletShot");
 
         DOTween.Sequence()
-            .Append(this.transform.gameObject.GetComponent<Rigidbody>().DOMoveX(m_doMoveXPos, m_doMoveXTime).SetDelay(m_firstDelayTime))
-            .Join(this.transform.DOMoveY(m_doMoveY, m_doMoveYTime).SetDelay(m_secondDelayTime).SetLink(this.gameObject));
-            
-
+            .Append(this.transform.gameObject.GetComponent<Rigidbody>().DOMoveY(m_firstDoMoveYPos,m_firstDoMoveYTime).SetDelay(m_firstDelayTime))
+            .Append(this.transform.gameObject.GetComponent<Rigidbody>().DOMoveX(m_doMoveXPos, m_doMoveXTime).SetDelay(m_secondDelayTime))
+            .Append(this.transform.DOMoveY(m_doMoveY, m_doMoveYTime).SetDelay(m_thirdDelayTime).SetLink(this.gameObject));
     }
 
     //Update is called once per frame

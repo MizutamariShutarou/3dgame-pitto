@@ -107,6 +107,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 450ed5f5ba47f4b43a5db18a27969d14, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  m_aimSpeed: 20
   m_bulletLifeTime: 10
   m_enemy: {fileID: 0}
   m_outoAimRange: 10

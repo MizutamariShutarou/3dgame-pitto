@@ -123,17 +123,22 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 05d2c4dd9557bc84c991643dca25e211, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  m_enemySpeed: 0
+  m_enemySpeed: 2
   m_withinRange: 0
-  m_doMoveXPos: 0
-  m_doMoveXTime: 0
-  m_waitTime: 0
-  m_firstDelayTime: 0
-  m_secondDelayTime: 0
-  m_doMoveY: 0
-  m_doMoveYTime: 0
+  m_firstDoMoveYPos: 60
+  m_firstDoMoveYTime: 3
+  m_doMoveXPos: 20
+  m_doMoveXTime: 2
+  m_waitTime: 2
+  m_firstDelayTime: 1
+  m_secondDelayTime: 2
+  m_thirdDelayTime: 3
+  m_doMoveY: 90
+  m_doMoveYTime: 2
+  m_destroyPos: 90
+  m_breakPos: 80
   m_enemyBullet: {fileID: 6417620424232066193, guid: 7553015e4af6d0d4ea60b31f86549363,
     type: 3}
   m_player: {fileID: 6186591876491466587, guid: 395fcfd255b65c441b66c3634bfef89b,
     type: 3}
-  m_enemyBulletSpeed: 0
+  m_enemyBulletSpeed: 25
