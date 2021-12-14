@@ -25,7 +25,7 @@ public class SpawnController : MonoBehaviour
         {
             return;
         }
-        if (m_stage.transform.position.z < -450)
+        if (m_stage.transform.position.z < -120)
         {
             AppearEnemys();
         }

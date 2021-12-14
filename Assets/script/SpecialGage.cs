@@ -6,7 +6,8 @@ using UnityEngine.UI;
 
 public class SpecialGage : MonoBehaviour
 {
-    [SerializeField] Slider m_spSlider = default;
+    [SerializeField] public Slider m_spSlider = default;
+    [SerializeField] GameObject m_enemys;
     int m_reset = 0;
     float m_changeTime;
     float m_time;
@@ -14,6 +15,7 @@ public class SpecialGage : MonoBehaviour
     void Start()
     {
         m_spSlider = GameObject.Find("Slider").GetComponent<Slider>();
+        //m_enemys = GameObject.FindWithTag("Enemy");
     }
     
 
@@ -29,6 +31,6 @@ public class SpecialGage : MonoBehaviour
 
     public void ChangeValue(float value)
     {
-        DOTween.To(() => m_spSlider.value, x => m_spSlider.value = x, value, m_changeTime);
+        DOTween.To(() => m_spSlider.value, x => m_spSlider.value = x, value, m_changeTime);//.SetLink(m_enemys.gameObject);
     }
 }

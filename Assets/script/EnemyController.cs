@@ -4,33 +4,35 @@ using UnityEngine;
 using DG.Tweening;
 public class EnemyController : MonoBehaviour
 {
-    [SerializeField] float m_enemySpeed = 0f;
-    //[SerializeField] float m_enemyHp = 5f;
     [SerializeField] float m_withinRange = 0;
-    [SerializeField] float m_firstDoMoveYPos = 0;
-    [SerializeField] float m_firstDoMoveYTime = 0;
-    [SerializeField] float m_doMoveXPos = 0;
-    [SerializeField] float m_doMoveXTime = 0;
+    [Header("Status")]
+    [SerializeField] float m_enemySpeed = 0f;
     [SerializeField] float m_waitTime = 0;
-    [SerializeField] float m_firstDelayTime = 0;
-    [SerializeField] float m_secondDelayTime = 0;
-    [SerializeField] float m_thirdDelayTime = 0;
-    [SerializeField] float m_doMoveY = 0;
-    [SerializeField] float m_doMoveYTime = 0;
     [SerializeField] float m_destroyPos = 0;
     [SerializeField] float m_breakPos;
+    public float m_enemyBulletSpeed = 0;
+
+    [Header("FirstMove")]
+    [SerializeField] float m_firstDoMoveYPos = 0;
+    [SerializeField] float m_firstDoMoveYTime = 0;
+    [SerializeField] float m_firstDelayTime = 0;
+    
+    [Header("SecondMove")]
+    [SerializeField] float m_doMoveXPos = 0;
+    [SerializeField] float m_doMoveXTime = 0;
+    [SerializeField] float m_secondDelayTime = 0;
+
+    [Header("LastMove")]
+    [SerializeField] float m_doMoveY = 0;
+    [SerializeField] float m_doMoveYTime = 0;
+    [SerializeField] float m_thirdDelayTime = 0;
+    
     public GameObject m_enemyBullet;
     public GameObject m_player;
-    public float m_enemyBulletSpeed = 0;
+    
     bool isOutOfRange = true;
     
     Rigidbody m_enemyRb = default;
-
-
-
-
-
-
     //Start is called before the first frame update
     void Start()
     {
@@ -74,6 +76,8 @@ public class EnemyController : MonoBehaviour
     {
         if (other.gameObject.CompareTag("Bullet"))
         {
+            SpecialGage sp = other.GetComponent<SpecialGage>();
+            sp.ChangeValue(20f);
             Destroy(this.gameObject);
         }
     }
