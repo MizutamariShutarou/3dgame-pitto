@@ -130,7 +130,7 @@ MonoBehaviour:
   m_doMoveXPos: 20
   m_doMoveXTime: 2
   m_waitTime: 2
-  m_firstDelayTime: 1
+  m_firstDelayTime: 3
   m_secondDelayTime: 2
   m_thirdDelayTime: 3
   m_doMoveY: 90
