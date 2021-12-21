@@ -29,16 +29,11 @@ public class SpawnController : MonoBehaviour
         {
             AppearEnemys();
         }
-
-
-
-
     }
 
     void AppearEnemys()
     {
         var random = Random.Range(0, m_enemys.Length);
-
         GameObject.Instantiate(m_enemys[random], transform.position, Quaternion.identity);
         enemysNum++;
         Debug.Log("Spawn");

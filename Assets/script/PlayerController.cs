@@ -5,7 +5,11 @@ using UnityEngine;
 public class PlayerController : MonoBehaviour
 {
     Rigidbody m_rb = default;
+    [Header("Status")]
     [SerializeField] float m_playerSpeed = 10f;
+    [SerializeField] int m_playerHp = 0;
+    [SerializeField] bool isOutRange = true;//playerの移動範囲の制御
+    [Header("BulletStatus")]
     [SerializeField] GameObject m_bullet = default;
     [SerializeField] float m_bulletSpeed;
     [SerializeField] GameObject m_muzzle = default;
@@ -19,6 +23,8 @@ public class PlayerController : MonoBehaviour
     {
         //　課題　具体的な数字→メンバー変数で作り直してシステムを組み立てる
         m_rb = GetComponent<Rigidbody>();
+        int hpCounts = m_playerHp;
+        isOutRange = true;
     }
 
     // Update is called once per frame
@@ -27,6 +33,11 @@ public class PlayerController : MonoBehaviour
         Move();
         Fire1();
         Fire2();
+
+        if(m_playerHp == 0)
+        {
+            Destroy(this.gameObject);
+        }
     }
     void Move()
     {
@@ -34,6 +45,8 @@ public class PlayerController : MonoBehaviour
         float v = Input.GetAxisRaw("Vertical");
         Vector3 vec = new Vector3(h, v, 0);
         m_rb.velocity = vec.normalized * m_playerSpeed;
+
+        
     }
     void Fire1()
     {
@@ -51,11 +64,14 @@ public class PlayerController : MonoBehaviour
             m_bulletCount = m_maxBulletCount;
         }
     }
-    private void OnTriggerEnter(Collider other)
+
+    private void OnTriggerEnter(Collider other)//HP制にした
     {
         if (other.gameObject.CompareTag("EnemyBullet"))
         {
-            Destroy(this.gameObject);
+            m_playerHp--;
+            Debug.Log(m_playerHp);
         }
     }
+
 }
