@@ -21,10 +21,12 @@ public class StageController : MonoBehaviour
         m_stageRb.velocity = m_stageRb.transform.position.normalized * m_stageSpeed;
         if(transform.position.z < -540)
         {
-            for (float i = 0; i <= 1.0; i += 0.01f)
+            for (float i = 0; i <= 0.05; i += 0.01f)
             {
-                m_stageRb.angularVelocity = new Vector3(i,0,0);
+                Debug.Log(i);
+                m_stageRb.angularVelocity = new Vector3(i, 0, 0);
             }
+
         }
 
         else if(transform.rotation.z > -60)

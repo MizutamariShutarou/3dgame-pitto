@@ -77,7 +77,7 @@ public class EnemyController : MonoBehaviour
         if (other.gameObject.CompareTag("Bullet"))
         {
             SpecialGage sp = other.GetComponent<SpecialGage>();　//上手く動かない
-            sp.ChangeValue(20f);
+            //sp.ChangeValue(10f);
             Destroy(this.gameObject);
         }
     }
