@@ -1,15 +1,20 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using DG.Tweening;
+
 
 public class PlayerController : MonoBehaviour
 {
     Rigidbody m_rb = default;
     [SerializeField] Transform m_image;
+    [SerializeField] Renderer m_playerRenderer;
+    [SerializeField] Renderer m_muzzleRenderer;
     [Header("Status")]
     [SerializeField] float m_playerSpeed = 10f;
     [SerializeField] int m_playerHp = 0;
     [SerializeField] bool isOutRange = true;//playerの移動範囲の制御
+    bool m_isMoved = true;
     
     [Header("BulletStatus")]
     [SerializeField] GameObject m_bullet = default;
@@ -25,23 +30,35 @@ public class PlayerController : MonoBehaviour
     {
         //　課題　具体的な数字→メンバー変数で作り直してシステムを組み立てる
         m_rb = GetComponent<Rigidbody>();
-        int hpCounts = m_playerHp;
+        
         isOutRange = true;
+        m_isMoved = true;
         
     }
 
     // Update is called once per frame
     void Update()
     {
-        Move();
-        Fire1();
-        Fire2();
-        SpecialAttack();
+        if (m_isMoved)
+        {
+            Move();
+            Fire1();
+            Fire2();
+            SpecialAttack();
+            Ray ray = Camera.main.ScreenPointToRay(Input.mousePosition);
+            transform.rotation = Quaternion.LookRotation(ray.direction);
+        }
 
-        Ray ray = Camera.main.ScreenPointToRay(Input.mousePosition);
-        transform.rotation = Quaternion.LookRotation(ray.direction);
+        if (m_playerHp <= 0)//死んだとき
+        {
+            m_isMoved = false;
+            m_playerRenderer.material.color = Color.red;
+            m_muzzleRenderer.material.color = Color.red;
+            m_rb.transform.Rotate(new Vector3(0, 2f, 0));
+            m_rb.useGravity = true;
+        }
 
-        if (m_playerHp == 0)
+        if(this.transform.position.y < -10)
         {
             Destroy(this.gameObject);
         }
@@ -78,9 +95,13 @@ public class PlayerController : MonoBehaviour
     {
         if (other.gameObject.CompareTag("EnemyBullet"))
         {
+            HPController.Instance.ChangeValue(1f);
             m_playerHp--;
-            Debug.Log(m_playerHp);
         }
     }
+
+    
+
+
 
 }

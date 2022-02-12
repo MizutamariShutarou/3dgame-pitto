@@ -47,10 +47,10 @@ public class SpecialGage : MonoBehaviour
     public void ChangeValue(float value)
     {
         SpecialValue += value;
-        ChangeUi();
+        ChangeUI();
     }
 
-    void ChangeUi()
+    void ChangeUI()
     {
         //m_spSlider.value = SpecialValue / m_specialMaxValue;
         DOTween.To(() => m_spSlider.value, x => m_spSlider.value = x, SpecialValue / m_specialMaxValue, m_changeTime);

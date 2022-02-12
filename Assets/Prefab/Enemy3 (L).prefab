@@ -129,10 +129,10 @@ MonoBehaviour:
   m_destroyPos: 90
   m_breakPos: 90
   m_enemyBulletSpeed: 45
-  m_firstDoMoveYPos: 50
+  m_firstDoMoveYPos: 3
   m_firstDoMoveYTime: 2
   m_firstDelayTime: 0
-  m_doMoveXPos: -5
+  m_doMoveXPos: 10
   m_doMoveXTime: 1
   m_secondDelayTime: 2
   m_doMoveY: 90
