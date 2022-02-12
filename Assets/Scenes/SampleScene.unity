@@ -145,7 +145,7 @@ GameObject:
   - component: {fileID: 205782584}
   - component: {fileID: 205782585}
   m_Layer: 5
-  m_Name: Slider
+  m_Name: SpecialGage
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -217,7 +217,7 @@ MonoBehaviour:
   m_HandleRect: {fileID: 1919949177}
   m_Direction: 0
   m_MinValue: 0
-  m_MaxValue: 100
+  m_MaxValue: 1
   m_WholeNumbers: 0
   m_Value: 0
   m_OnValueChanged:
@@ -236,7 +236,18 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_spSlider: {fileID: 205782584}
-  m_enemys: {fileID: 218853559693336068, guid: a53e5a6143bd67045ae1b277ba1b1235, type: 3}
+  m_enemys:
+  - {fileID: 8489064803726285052, guid: 4d61729a502399e488567b49588a7e8e, type: 3}
+  - {fileID: 2165410041068116515, guid: 2b267e6098bd51f429b83ec70d3992af, type: 3}
+  - {fileID: 218853559693336068, guid: a53e5a6143bd67045ae1b277ba1b1235, type: 3}
+  - {fileID: 6436869320033579690, guid: 1cc46306e6cec774dabb8492b89b7d02, type: 3}
+  - {fileID: 2304512854597462883, guid: e0d6485c64a777b41ac558055215d222, type: 3}
+  - {fileID: 8059444222437071683, guid: b00176321c006004eafac8a614717c0a, type: 3}
+  - {fileID: 1862168521154330506, guid: b804a059b03eeae449a74da413ede437, type: 3}
+  - {fileID: 5392873694129174264, guid: 2ca9e9a111e732146a7dd7fd09c00b99, type: 3}
+  - {fileID: 7581179548974899709, guid: 046ab7c2e0945f345bb45f61baeb7c07, type: 3}
+  m_changeTime: 0.2
+  m_fulledSp: 0
 --- !u!1 &353087102
 GameObject:
   m_ObjectHideFlags: 0
@@ -1058,10 +1069,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0cd44c1031e13a943bb63640046fad76, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  m_UiScaleMode: 0
+  m_UiScaleMode: 1
   m_ReferencePixelsPerUnit: 100
   m_ScaleFactor: 1
-  m_ReferenceResolution: {x: 800, y: 600}
+  m_ReferenceResolution: {x: 1920, y: 1080}
   m_ScreenMatchMode: 0
   m_MatchWidthOrHeight: 0
   m_PhysicalUnit: 3
@@ -1566,8 +1577,18 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 6186591876491466657, guid: 395fcfd255b65c441b66c3634bfef89b,
         type: 3}
+      propertyPath: m_image
+      value: 
+      objectReference: {fileID: 554462416}
+    - target: {fileID: 6186591876491466657, guid: 395fcfd255b65c441b66c3634bfef89b,
+        type: 3}
       propertyPath: m_playerHp
       value: 10
+      objectReference: {fileID: 0}
+    - target: {fileID: 6186591876491466662, guid: 395fcfd255b65c441b66c3634bfef89b,
+        type: 3}
+      propertyPath: m_Constraints
+      value: 48
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 395fcfd255b65c441b66c3634bfef89b, type: 3}

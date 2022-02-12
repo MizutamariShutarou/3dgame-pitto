@@ -7,30 +7,60 @@ using UnityEngine.UI;
 public class SpecialGage : MonoBehaviour
 {
     [SerializeField] public Slider m_spSlider = default;
-    [SerializeField] GameObject m_enemys;
+    [SerializeField] GameObject[] m_enemys;
+    //[SerializeField] int m_maxSpSlider = 100; 
     int m_reset = 0;
-    float m_changeTime;
+    [SerializeField] float m_changeTime;
     float m_time;
-    // Start is called before the first frame update
+    public bool m_fulledSp = false;
+
+    public float SpecialValue { get; private set; }
+
+    float m_specialMaxValue = 100f;
+
+    public static SpecialGage Instance { get; private set; } = default;
+    private void Awake()
+    {
+        if (Instance is null)
+        {
+            Instance = this;
+            return;
+        }
+        Destroy(this);
+    }
+
     void Start()
     {
-        m_spSlider = GameObject.Find("Slider").GetComponent<Slider>();
-        //m_enemys = GameObject.FindWithTag("Enemy");
+        m_spSlider = GameObject.Find("SpecialGage").GetComponent<Slider>();
+        m_spSlider.value = 0;
+    }
+    
+    void Update()
+    {
+        if(m_spSlider.value == 100)//100になったらtrueになって必殺技が打てる(撃った後はfalseに)
+        {
+            m_fulledSp = true;
+        }
     }
     
 
-    // Update is called once per frame
-    void Update()
-    {
-        
-    }
-    public void Change(float value)
-    {
-        ChangeValue(m_spSlider.value + value);
-    }
-
     public void ChangeValue(float value)
     {
-        DOTween.To(() => m_spSlider.value, x => m_spSlider.value = x, value, m_changeTime);//.SetLink(m_enemys.gameObject);
+        SpecialValue += value;
+        ChangeUi();
+    }
+
+    void ChangeUi()
+    {
+        //m_spSlider.value = SpecialValue / m_specialMaxValue;
+        DOTween.To(() => m_spSlider.value, x => m_spSlider.value = x, SpecialValue / m_specialMaxValue, m_changeTime);
+    }
+
+    private void OnDestroy()
+    {
+        if (Instance == this)
+        {
+            Instance = null;
+        }
     }
 }

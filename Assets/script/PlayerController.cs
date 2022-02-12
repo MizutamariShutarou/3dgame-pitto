@@ -5,10 +5,12 @@ using UnityEngine;
 public class PlayerController : MonoBehaviour
 {
     Rigidbody m_rb = default;
+    [SerializeField] Transform m_image;
     [Header("Status")]
     [SerializeField] float m_playerSpeed = 10f;
     [SerializeField] int m_playerHp = 0;
     [SerializeField] bool isOutRange = true;//playerの移動範囲の制御
+    
     [Header("BulletStatus")]
     [SerializeField] GameObject m_bullet = default;
     [SerializeField] float m_bulletSpeed;
@@ -25,6 +27,7 @@ public class PlayerController : MonoBehaviour
         m_rb = GetComponent<Rigidbody>();
         int hpCounts = m_playerHp;
         isOutRange = true;
+        
     }
 
     // Update is called once per frame
@@ -33,8 +36,12 @@ public class PlayerController : MonoBehaviour
         Move();
         Fire1();
         Fire2();
+        SpecialAttack();
 
-        if(m_playerHp == 0)
+        Ray ray = Camera.main.ScreenPointToRay(Input.mousePosition);
+        transform.rotation = Quaternion.LookRotation(ray.direction);
+
+        if (m_playerHp == 0)
         {
             Destroy(this.gameObject);
         }
@@ -45,8 +52,6 @@ public class PlayerController : MonoBehaviour
         float v = Input.GetAxisRaw("Vertical");
         Vector3 vec = new Vector3(h, v, 0);
         m_rb.velocity = vec.normalized * m_playerSpeed;
-
-        
     }
     void Fire1()
     {
@@ -64,8 +69,12 @@ public class PlayerController : MonoBehaviour
             m_bulletCount = m_maxBulletCount;
         }
     }
+    void SpecialAttack()//もしm_fulledSp = trueなら必殺技がうてる。
+    {
 
-    private void OnTriggerEnter(Collider other)//HP制にした
+    }
+
+    private void OnTriggerEnter(Collider other)//HP制
     {
         if (other.gameObject.CompareTag("EnemyBullet"))
         {
