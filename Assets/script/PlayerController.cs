@@ -10,6 +10,8 @@ public class PlayerController : MonoBehaviour
     [SerializeField] Transform m_image;
     [SerializeField] Renderer m_playerRenderer;
     [SerializeField] Renderer m_muzzleRenderer;
+    [SerializeField] GameObject[] m_enemys = default;
+    [SerializeField] GameObject effectPrefab;
     [Header("Status")]
     [SerializeField] float m_playerSpeed = 10f;
     [SerializeField] int m_playerHp = 0;
@@ -110,7 +112,21 @@ public class PlayerController : MonoBehaviour
     }
     void SpecialAttack()//もしm_fulledSp = trueなら必殺技がうてる。
     {
-
+        if (Input.GetKeyDown("space"))
+        {
+            SpecialGage.Instance.ResetValue();
+            if (SpecialGage.Instance.IsFulledSp)//100になったらtrueになって必殺技が打てる(撃った後はfalseに)
+            {
+                m_enemys = GameObject.FindGameObjectsWithTag("Enemy");
+                foreach (GameObject e in m_enemys)
+                {
+                    Destroy(e);
+                    
+                    //GameObject effect = Instantiate(effectPrefab, e.transform.position, Quaternion.identity);
+                    //Destroy(effect, 0.5f);
+                }
+            }
+        }
     }
 
     private void OnTriggerEnter(Collider other)//HP制

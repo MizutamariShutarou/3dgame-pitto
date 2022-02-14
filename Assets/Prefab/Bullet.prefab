@@ -110,8 +110,13 @@ MonoBehaviour:
   m_bulletLifeTime: 10
   m_enemyMuzzle: {fileID: 2599886112262567422, guid: 7a02e82f61a843a428f004305daf202b,
     type: 3}
+  m_enemys: []
   m_homingSpeed: 200
-  m_distance: 20
+  m_distance: 10
+  m_radius: 10
+  m_enemyLayer:
+    serializedVersion: 2
+    m_Bits: 256
 --- !u!54 &4739231353883741114
 Rigidbody:
   m_ObjectHideFlags: 0

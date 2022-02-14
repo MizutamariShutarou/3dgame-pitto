@@ -10,6 +10,7 @@ public class EnemyController : MonoBehaviour
     [SerializeField] float m_waitTime = 0;
     [SerializeField] float m_destroyPos = 0;
     [SerializeField] float m_breakPos;
+    [SerializeField] float m_spChargeValue;
     public float m_enemyBulletSpeed = 0;
 
     //[Header("FirstMove")]
@@ -107,9 +108,11 @@ public class EnemyController : MonoBehaviour
         if (other.gameObject.CompareTag("Bullet"))
         {
             //SpecialGage sp = GameObject.FindObjectOfType<SpecialGage>();　//上手く動かない
-            SpecialGage.Instance.ChangeValue(10f);
+            SpecialGage.Instance.ChangeValue(m_spChargeValue);
             //sp.ChangeValue(10f);
             Destroy(this.gameObject);
         }
     }
+
+   
 }

@@ -9,13 +9,23 @@ public class SpecialGage : MonoBehaviour
     [SerializeField] public Slider m_spSlider = default;
     [SerializeField] GameObject[] m_enemys;
     //[SerializeField] int m_maxSpSlider = 100; 
-    int m_reset = 0;
+    
     [SerializeField] float m_changeTime;
     float m_time;
-    public bool m_fulledSp = false;
+    public bool m_isFulledSp = false;
 
     public float SpecialValue { get; private set; }
-
+    public bool IsFulledSp
+    {
+        get
+        {
+            return m_isFulledSp;
+        }
+        set
+        {
+            m_isFulledSp = value;
+        }
+    }
     float m_specialMaxValue = 100f;
 
     public static SpecialGage Instance { get; private set; } = default;
@@ -33,13 +43,18 @@ public class SpecialGage : MonoBehaviour
     {
         m_spSlider = GameObject.Find("SpecialGage").GetComponent<Slider>();
         m_spSlider.value = 0;
+        m_isFulledSp = false;
     }
     
     void Update()
     {
-        if(m_spSlider.value == 100)//100になったらtrueになって必殺技が打てる(撃った後はfalseに)
+        if(SpecialValue >= 100)//100になったらtrueになって必殺技が打てる(撃った後はfalseに)
         {
-            m_fulledSp = true;
+            m_isFulledSp = true;
+        }
+        else
+        {
+            m_isFulledSp = false;
         }
     }
     
@@ -48,6 +63,11 @@ public class SpecialGage : MonoBehaviour
     {
         SpecialValue += value;
         ChangeUI();
+    }
+
+    public void ResetValue()
+    {
+        SpecialValue = 0;
     }
 
     void ChangeUI()

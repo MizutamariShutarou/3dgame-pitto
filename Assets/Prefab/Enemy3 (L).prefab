@@ -14,7 +14,7 @@ GameObject:
   - component: {fileID: 1862168521154330504}
   - component: {fileID: 1862168521154330505}
   - component: {fileID: 1862168521154330499}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: Enemy3 (L)
   m_TagString: Enemy
   m_Icon: {fileID: 0}
@@ -91,7 +91,7 @@ BoxCollider:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1862168521154330506}
   m_Material: {fileID: 0}
-  m_IsTrigger: 1
+  m_IsTrigger: 0
   m_Enabled: 1
   serializedVersion: 2
   m_Size: {x: 1.5, y: 1.5, z: 1.5}
@@ -129,6 +129,7 @@ MonoBehaviour:
   m_waitTime: 3
   m_destroyPos: 90
   m_breakPos: 90
+  m_spChargeValue: 10
   m_enemyBulletSpeed: 45
   m_firstDoMoveYPos: 20
   m_firstDoMoveYTime: 2
@@ -152,10 +153,20 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 1862168521154330509}
     m_Modifications:
+    - target: {fileID: 605937103730892001, guid: 7a02e82f61a843a428f004305daf202b,
+        type: 3}
+      propertyPath: m_Enabled
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 2599886112262567422, guid: 7a02e82f61a843a428f004305daf202b,
         type: 3}
       propertyPath: m_Name
       value: Muzzle
+      objectReference: {fileID: 0}
+    - target: {fileID: 2599886112262567422, guid: 7a02e82f61a843a428f004305daf202b,
+        type: 3}
+      propertyPath: m_TagString
+      value: Enemy
       objectReference: {fileID: 0}
     - target: {fileID: 5557689043280825533, guid: 7a02e82f61a843a428f004305daf202b,
         type: 3}
