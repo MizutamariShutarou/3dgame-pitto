@@ -647,8 +647,8 @@ MonoBehaviour:
   - {fileID: 7581179548974899709, guid: 046ab7c2e0945f345bb45f61baeb7c07, type: 3}
   m_stage: {fileID: 86432105}
   maxEnemysNum: 1
-  m_spawnTime: 0
-  m_Time: 0
+  m_spawnTime: 5
+  m_stageEnd: -500
 --- !u!1 &662189552
 GameObject:
   m_ObjectHideFlags: 0
@@ -1100,8 +1100,8 @@ MonoBehaviour:
   - {fileID: 5392873694129174264, guid: 2ca9e9a111e732146a7dd7fd09c00b99, type: 3}
   m_stage: {fileID: 86432105}
   maxEnemysNum: 1
-  m_spawnTime: 0
-  m_Time: 0
+  m_spawnTime: 3
+  m_stageEnd: -500
 --- !u!4 &1200841295
 Transform:
   m_ObjectHideFlags: 0
@@ -1311,8 +1311,8 @@ MonoBehaviour:
   - {fileID: 1862168521154330506, guid: b804a059b03eeae449a74da413ede437, type: 3}
   m_stage: {fileID: 86432105}
   maxEnemysNum: 1
-  m_spawnTime: 0
-  m_Time: 0
+  m_spawnTime: 4
+  m_stageEnd: -500
 --- !u!4 &1651548905
 Transform:
   m_ObjectHideFlags: 0

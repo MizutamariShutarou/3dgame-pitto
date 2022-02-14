@@ -9,25 +9,31 @@ public class SpawnController : MonoBehaviour
     [SerializeField] GameObject m_stage;
     [SerializeField] int maxEnemysNum;
     private int enemysNum;
+
     [SerializeField] float m_spawnTime;
-    [SerializeField] float m_Time;
+    [SerializeField] float m_stageEnd;
+    bool m_Spawned;
     
     // Start is called before the first frame update
     void Start()
     {
+        
+        m_Spawned = false;
         enemysNum = 0;
     }
 
     // Update is called once per frame
     void Update()
     {
-        var random = Random.Range(0, m_enemys.Length);
+        var random = Random.Range(0, m_enemys.Length - 1);
         if (enemysNum >= maxEnemysNum)
         {
             return;
         }
         if (m_stage.transform.position.z < -120)
         {
+            m_Spawned = true;
+            StartCoroutine("SpawnEnemys");
             AppearEnemys();
         }
     }
@@ -37,5 +43,14 @@ public class SpawnController : MonoBehaviour
         var random = Random.Range(0, m_enemys.Length);
         GameObject.Instantiate(m_enemys[random], transform.position, Quaternion.identity);
         enemysNum++;
+    }
+    IEnumerator SpawnEnemys()
+    {
+        while(m_Spawned)
+        {
+            yield return new WaitForSeconds(m_spawnTime);
+            AppearEnemys();
+            if (m_stage.transform.position.z < m_stageEnd) yield break; //Debug.Log("打ち終わり");
+        }
     }
 }
