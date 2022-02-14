@@ -9,6 +9,7 @@ TagManager:
   - Wall
   - EnemyBullet
   - Crosshair
+  - Muzzle
   layers:
   - Default
   - TransparentFX

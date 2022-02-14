@@ -4,47 +4,44 @@ using UnityEngine;
 
 public class BulletController : MonoBehaviour
 {
-    [SerializeField] float m_aimSpeed = 0;
     [SerializeField] float m_bulletLifeTime = 10f;
-    [SerializeField] GameObject[] m_enemy = default;
+    [SerializeField] GameObject m_enemyMuzzle = default;
     List<GameObject> m_enemyList = new List<GameObject>();
-    
-    [SerializeField] float m_outoAimRange;
+    [SerializeField] float m_homingSpeed = 0;
+    [SerializeField] float m_distance = 0;
+
     // Start is called before the first frame update
     void Start()
     {
         Rigidbody rb = GetComponent<Rigidbody>();
-        //m_enemy = GameObject.FindGameObjectsWithTag("Enemy");
-        
-        Destroy(this.gameObject, m_bulletLifeTime);
+        m_enemyMuzzle = GameObject.Find("Muzzle");
     }
     private void Update()
     {
-        //GameObject closestEnemy = default;
-        //closestEnemy = m_enemyList[0];
-        //foreach (var i in m_enemy)
-        //{
-           //m_enemyList.Add(i);
-        //}
-
-        //for (int i = 0; i < m_enemyList.Count; i++)
-        //{
-            //Vector3 v = m_enemyList[i].transform.position - transform.position;
-            //if (v.y < m_outoAimRange)
-            //{
-                //transform.position = Vector3.MoveTowards(transform.position, m_enemyList[i].transform.position, Time.deltaTime);
-            //}
-        //}
+        if (m_enemyMuzzle != null)//nullじゃないときにホーミングする
+        {
+            float dis = Vector3.Distance(this.transform.position, m_enemyMuzzle.transform.position);
+            if (dis < m_distance)
+            {
+                this.transform.position = Vector3.MoveTowards(this.transform.position, m_enemyMuzzle.transform.position, m_homingSpeed * Time.deltaTime);
+            }
+        }
+        Destroy(this.gameObject, m_bulletLifeTime);
     }
         
     // Update is called once per frame
     private void OnTriggerEnter(Collider collision)
     {
-        if(collision.transform.CompareTag("Enemy"))
+        if(collision.transform.CompareTag("Enemy") || collision.transform.CompareTag("Muzzle"))
         {
             Destroy(gameObject);
-            //m_enemyList.Remove(m_enemy[0]);
         }
     }
-    
+
+    private void OnDrawGizmosSelected()
+    {
+        Gizmos.color = Color.red;//m_homingRangeの可視化
+        Gizmos.DrawWireSphere(transform.position, m_distance);
+    }
+
 }

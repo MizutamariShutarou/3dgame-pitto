@@ -6,13 +6,17 @@ public class EnemyBulletController : MonoBehaviour
 {
     // Start is called before the first frame update
     [SerializeField] float m_bulletLifeTime = 10f;
+   
 
     // Start is called before the first frame update
     void Start()
     {
-        Rigidbody rb = GetComponent<Rigidbody>();
-
+        Rigidbody rb = GetComponent<Rigidbody>();       
+    }
+    private void Update()
+    {
         Destroy(this.gameObject, m_bulletLifeTime);
+        
     }
     private void OnTriggerEnter(Collider other)
     {

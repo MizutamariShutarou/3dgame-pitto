@@ -18,10 +18,18 @@ public class StageController : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        m_stageRb.velocity = m_stageRb.transform.position.normalized * m_stageSpeed;
+        if(PlayerController.Instance.IsPlayerMoved)
+        {
+            m_stageRb.velocity = m_stageRb.transform.position.normalized * m_stageSpeed;
+        }
+        else if(!PlayerController.Instance.IsPlayerMoved)
+        {
+            m_stageRb.velocity = m_stageRb.transform.position.normalized * 0;
+        }
+        
         if(transform.position.z < -540)
         {
-            m_stageRb.angularVelocity = new Vector3(0.05f, 0, 0);
+            m_stageRb.angularVelocity = new Vector3(-0.04f, 0, 0);
         }
 
         else if(transform.rotation.z > -60)

@@ -9,7 +9,8 @@ public class SpawnController : MonoBehaviour
     [SerializeField] GameObject m_stage;
     [SerializeField] int maxEnemysNum;
     private int enemysNum;
-
+    [SerializeField] float m_spawnTime;
+    [SerializeField] float m_Time;
     
     // Start is called before the first frame update
     void Start()
@@ -36,6 +37,5 @@ public class SpawnController : MonoBehaviour
         var random = Random.Range(0, m_enemys.Length);
         GameObject.Instantiate(m_enemys[random], transform.position, Quaternion.identity);
         enemysNum++;
-        Debug.Log("Spawn");
     }
 }

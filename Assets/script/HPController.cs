@@ -39,6 +39,7 @@ public class HPController : MonoBehaviour
     public void ChangeValue(float value)
     {
         HpValue -= value;
+        Debug.Log(HpValue);
         ChangeUI();
     }
 

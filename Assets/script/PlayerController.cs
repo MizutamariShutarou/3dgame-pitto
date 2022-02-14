@@ -14,7 +14,7 @@ public class PlayerController : MonoBehaviour
     [SerializeField] float m_playerSpeed = 10f;
     [SerializeField] int m_playerHp = 0;
     [SerializeField] bool isOutRange = true;//playerの移動範囲の制御
-    bool m_isMoved = true;
+    bool m_isPlayerMoved = true;
     
     [Header("BulletStatus")]
     [SerializeField] GameObject m_bullet = default;
@@ -24,6 +24,28 @@ public class PlayerController : MonoBehaviour
     [SerializeField] int m_maxBulletCount = 0;
     int m_bulletCount = 10;
     
+    public bool IsPlayerMoved
+    {
+        get
+        {
+            return m_isPlayerMoved;
+        }
+        set
+        {
+            m_isPlayerMoved = value;
+        }
+    }
+
+    public static PlayerController Instance { get; private set; } = default;
+    private void Awake()
+    {
+        if (Instance is null)
+        {
+            Instance = this;
+            return;
+        }
+        Destroy(this);
+    }
 
     // Start is called before the first frame update
     void Start()
@@ -32,14 +54,14 @@ public class PlayerController : MonoBehaviour
         m_rb = GetComponent<Rigidbody>();
         
         isOutRange = true;
-        m_isMoved = true;
+        m_isPlayerMoved = true;
         
     }
 
     // Update is called once per frame
     void Update()
     {
-        if (m_isMoved)
+        if (m_isPlayerMoved)
         {
             Move();
             Fire1();
@@ -51,7 +73,7 @@ public class PlayerController : MonoBehaviour
 
         if (m_playerHp <= 0)//死んだとき
         {
-            m_isMoved = false;
+            m_isPlayerMoved = false;
             m_playerRenderer.material.color = Color.red;
             m_muzzleRenderer.material.color = Color.red;
             m_rb.transform.Rotate(new Vector3(0, 2f, 0));
@@ -99,8 +121,13 @@ public class PlayerController : MonoBehaviour
             m_playerHp--;
         }
     }
-
-    
+    private void OnDestroy()
+    {
+        if (Instance == this)
+        {
+            Instance = null;
+        }
+    }
 
 
 
