@@ -67,7 +67,7 @@ public class SpecialGage : MonoBehaviour
 
     public void ResetValue()
     {
-        SpecialValue = 0;
+        m_spSlider.value = 0;
     }
 
     void ChangeUI()
