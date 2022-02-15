@@ -16,7 +16,6 @@ public class EnemyBulletController : MonoBehaviour
     private void Update()
     {
         Destroy(this.gameObject, m_bulletLifeTime);
-        
     }
     private void OnTriggerEnter(Collider other)
     {

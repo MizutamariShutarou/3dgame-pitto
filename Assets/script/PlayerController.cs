@@ -14,11 +14,13 @@ public class PlayerController : MonoBehaviour
     [SerializeField] GameObject[] m_enemys = default;
     [SerializeField] GameObject effectPrefab;
     [SerializeField] GameObject[] m_bulletIcon = default;
+    [SerializeField] GameObject m_healItem;
+    [SerializeField] ItemSpawnManager m_itemSpawnController = default;
     
     [Header("Status")]
     [SerializeField] float m_playerSpeed = 10f;
-    [SerializeField] int m_playerHp = 0;
-    [SerializeField] bool isOutRange = true;//playerの移動範囲の制御
+    [SerializeField] public int m_playerHp = 0;
+    //[SerializeField] bool isOutRange = true;//playerの移動範囲の制御
     bool m_isPlayerMoved = true;
     
     [Header("BulletStatus")]
@@ -58,7 +60,7 @@ public class PlayerController : MonoBehaviour
         //　課題　具体的な数字→メンバー変数で作り直してシステムを組み立てる
         m_rb = GetComponent<Rigidbody>();
         
-        isOutRange = true;
+        //isOutRange = true;
         m_isPlayerMoved = true;
         
     }
@@ -140,6 +142,14 @@ public class PlayerController : MonoBehaviour
         {
             HPController.Instance.ChangeValue(1f);
             m_playerHp--;
+        }
+        else if (other.gameObject.CompareTag("Heal"))
+        {
+            if (HPController.Instance.HpValue < 10)
+            {
+                m_playerHp++;
+                HPController.Instance.ChangeValue(-1f);
+            }
         }
     }
     void UpdateBulletIcon()

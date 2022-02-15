@@ -4,7 +4,8 @@ using UnityEngine;
 using DG.Tweening;
 public class EnemyController : MonoBehaviour
 {
-    [SerializeField] float m_withinRange = 0;
+    //[SerializeField] float m_withinRange = 0;
+    
     [Header("Status")]
     [SerializeField] float m_enemySpeed = 0f;
     [SerializeField] float m_waitTime = 0;
@@ -49,13 +50,13 @@ public class EnemyController : MonoBehaviour
     [SerializeField] GameObject m_player;
     
     
-    bool isOutOfRange = true;
+    //bool isOutOfRange = true;
     
     Rigidbody m_enemyRb = default;
     //Start is called before the first frame update
     void Start()
     {
-        isOutOfRange = false;
+        //isOutOfRange = false;
         m_enemyRb = GetComponent<Rigidbody>();
         m_player = GameObject.Find("Player");
         
@@ -79,17 +80,19 @@ public class EnemyController : MonoBehaviour
     //Update is called once per frame
     void Update()
     {
-        if (transform.position.x > m_withinRange) isOutOfRange = true;
-        else isOutOfRange = false;
+        //if (transform.position.x > m_withinRange) isOutOfRange = true;
+        //else isOutOfRange = false;
 
         m_enemyRb.velocity = Vector3.back * m_enemySpeed;
-        transform.LookAt(m_player.transform);
+
+        if (m_player != null)
+        {
+            transform.LookAt(m_player.transform);
+        }
         if (transform.position.y >= m_destroyPos)
         {
             Destroy(this.gameObject);
         }
-        
-        
     }
 
     IEnumerator BulletShot()

@@ -8,7 +8,7 @@ public class HPController : MonoBehaviour
 {
     [SerializeField] public Slider m_hpSlider = default; 
     [SerializeField] float m_changeTime;
-    public float HpValue { get; private set; }
+    public float HpValue { get; set; }
 
     float m_hpMaxValue = 10f;
 
@@ -39,7 +39,7 @@ public class HPController : MonoBehaviour
     public void ChangeValue(float value)
     {
         HpValue -= value;
-        Debug.Log(HpValue);
+        //Debug.Log(HpValue);
         ChangeUI();
     }
 

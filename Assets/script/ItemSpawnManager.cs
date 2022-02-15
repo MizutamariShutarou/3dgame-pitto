@@ -1,0 +1,52 @@
+﻿using System.Collections;
+using System.Collections.Generic;
+using UnityEngine;
+
+public class ItemSpawnManager : MonoBehaviour
+{
+    [SerializeField] GameObject m_itemPrefab;
+    //[SerializeField] GameObject m_player;
+    //[SerializeField] int m_healValue;
+    [SerializeField] float m_minTime = 2f;
+    [SerializeField] float m_maxTime = 5f;
+    [SerializeField] float m_xMinPosition = -10f;
+    [SerializeField] float m_xMaxPosition = 10f;
+    [SerializeField] float m_yMinPosition = 0f;
+    [SerializeField] float m_yMaxPosition = 10f;
+    [SerializeField] float m_zMinPosition = 10f;
+    [SerializeField] float m_zMaxPosition = 20f;
+    [SerializeField] float m_interval;
+    [SerializeField] float m_time = 0f;
+
+    void Start()
+    {
+        m_interval = GetRandomTime();
+        
+    }
+
+    void Update()
+    {
+        m_time += Time.deltaTime;
+
+        if (m_time > m_interval)
+        {
+            GameObject item = Instantiate(m_itemPrefab);
+            item.transform.position = GetRandomPosition();
+            m_time = 0f;
+            m_interval = GetRandomTime();
+        }
+    }
+    private float GetRandomTime()
+    {
+        return Random.Range(m_minTime, m_maxTime);
+    }
+    private Vector3 GetRandomPosition()
+    {
+        float x = Random.Range(m_xMinPosition, m_xMaxPosition);
+        float y = Random.Range(m_yMinPosition, m_yMaxPosition);
+        float z = Random.Range(m_zMinPosition, m_zMaxPosition);
+
+        return new Vector3(x, y, z);
+    }
+    
+}
