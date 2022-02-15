@@ -18,6 +18,7 @@ public class PlayerController : MonoBehaviour
     [SerializeField] GameObject m_healItem;
     [SerializeField] ItemSpawnManager m_itemSpawnController = default;
     [SerializeField] float m_waitTime = 0;
+    [SerializeField] float m_reloadChangeValue = 0;
     bool m_isReloaded;
     
     [Header("Status")]
@@ -114,11 +115,9 @@ public class PlayerController : MonoBehaviour
     }
     public void Fire2()//リロード
     {
-        if (Input.GetButtonDown("Fire2"))
+        if (Input.GetButtonDown("Fire2") && !m_isReloaded)
         {
             StartCoroutine("StartReload");
-            //m_bulletCount = m_maxBulletCount;
-            //ResetBulletIcon();
         }
     }
     void SpecialAttack()//もしm_fulledSp = trueなら必殺技がうてる。
@@ -144,7 +143,7 @@ public class PlayerController : MonoBehaviour
     {
         m_isReloaded = true;
         while(m_isReloaded)
-        { 
+        {
             yield return new WaitForSeconds(m_waitTime);
             m_bulletCount = m_maxBulletCount;
             ResetBulletIcon();
