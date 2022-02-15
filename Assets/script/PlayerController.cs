@@ -19,6 +19,7 @@ public class PlayerController : MonoBehaviour
     [SerializeField] ItemSpawnManager m_itemSpawnController = default;
     [SerializeField] float m_waitTime = 0;
     [SerializeField] float m_reloadChangeValue = 0;
+    
     bool m_isReloaded;
     
     [Header("Status")]
@@ -115,7 +116,7 @@ public class PlayerController : MonoBehaviour
     }
     public void Fire2()//リロード
     {
-        if (Input.GetButtonDown("Fire2") && !m_isReloaded)
+        if (Input.GetButtonDown("Fire2") && !m_isReloaded && m_bulletCount < m_maxBulletCount)
         {
             StartCoroutine("StartReload");
         }
