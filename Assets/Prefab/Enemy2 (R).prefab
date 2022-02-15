@@ -124,13 +124,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 05d2c4dd9557bc84c991643dca25e211, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  m_withinRange: 0
   m_enemySpeed: 3
   m_waitTime: 3
   m_destroyPos: 90
   m_breakPos: 90
   m_spChargeValue: 10
-  m_enemyBulletSpeed: 35
+  m_enemyBulletSpeed: 40
   m_firstDoMoveYPos: 20
   m_firstDoMoveYTime: 2
   m_firstDelayTime: 0

@@ -56,6 +56,7 @@ public class EnemyController : MonoBehaviour
     //Start is called before the first frame update
     void Start()
     {
+        m_spChargeValue = GameManager.Instance.m_spValue;
         //isOutOfRange = false;
         m_enemyRb = GetComponent<Rigidbody>();
         m_player = GameObject.Find("Player");

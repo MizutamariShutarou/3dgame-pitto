@@ -12,6 +12,7 @@ public class PlayerController : MonoBehaviour
     [SerializeField] Renderer m_playerRenderer;
     [SerializeField] Renderer m_muzzleRenderer;
     [SerializeField] GameObject[] m_enemys = default;
+    //[SerializeField] GameObject m_enemyBullet = default;
     [SerializeField] GameObject effectPrefab;
     [SerializeField] GameObject[] m_bulletIcon = default;
     [SerializeField] GameObject m_healItem;
@@ -132,6 +133,7 @@ public class PlayerController : MonoBehaviour
                     //GameObject effect = Instantiate(effectPrefab, e.transform.position, Quaternion.identity);
                     //Destroy(effect, 0.5f);
                 }
+                
             }
         }
     }
