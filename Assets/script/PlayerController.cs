@@ -17,6 +17,8 @@ public class PlayerController : MonoBehaviour
     [SerializeField] GameObject[] m_bulletIcon = default;
     [SerializeField] GameObject m_healItem;
     [SerializeField] ItemSpawnManager m_itemSpawnController = default;
+    [SerializeField] float m_waitTime = 0;
+    bool m_isReloaded;
     
     [Header("Status")]
     [SerializeField] float m_playerSpeed = 10f;
@@ -102,7 +104,7 @@ public class PlayerController : MonoBehaviour
     }
     public void Fire1()
     {
-        if (Input.GetButtonDown("Fire1") && m_bulletCount > 0)
+        if (Input.GetButtonDown("Fire1") && m_bulletCount > 0 && !m_isReloaded)
         {
             Rigidbody obj = Instantiate(m_bullet, m_muzzle.transform.position, Quaternion.identity).GetComponent<Rigidbody>();
             obj.velocity = transform.rotation * Vector3.forward * m_bulletSpeed;
@@ -114,8 +116,9 @@ public class PlayerController : MonoBehaviour
     {
         if (Input.GetButtonDown("Fire2"))
         {
-            m_bulletCount = m_maxBulletCount;
-            ResetBulletIcon();
+            StartCoroutine("StartReload");
+            //m_bulletCount = m_maxBulletCount;
+            //ResetBulletIcon();
         }
     }
     void SpecialAttack()//もしm_fulledSp = trueなら必殺技がうてる。
@@ -136,6 +139,19 @@ public class PlayerController : MonoBehaviour
                 
             }
         }
+    }
+    IEnumerator StartReload()
+    {
+        m_isReloaded = true;
+        while(m_isReloaded)
+        { 
+            yield return new WaitForSeconds(m_waitTime);
+            m_bulletCount = m_maxBulletCount;
+            ResetBulletIcon();
+            m_isReloaded = false;
+            if (m_bulletCount == m_maxBulletCount) yield break;
+        }
+
     }
 
     private void OnTriggerEnter(Collider other)//HP制
