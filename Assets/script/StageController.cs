@@ -25,9 +25,10 @@ public class StageController : MonoBehaviour
         else if(!PlayerController.Instance.IsPlayerMoved)
         {
             m_stageRb.velocity = m_stageRb.transform.position.normalized * 0;
+            m_stageRb.angularVelocity = Vector3.zero;
         }
         
-        if(transform.position.z < -540)
+        if(transform.position.z < -540 && PlayerController.Instance.IsPlayerMoved)
         {
             m_stageRb.angularVelocity = new Vector3(-0.04f, 0, 0);
         }

@@ -1,6 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 using DG.Tweening;
 
 
@@ -12,6 +13,8 @@ public class PlayerController : MonoBehaviour
     [SerializeField] Renderer m_muzzleRenderer;
     [SerializeField] GameObject[] m_enemys = default;
     [SerializeField] GameObject effectPrefab;
+    [SerializeField] GameObject[] m_bulletIcon = default;
+    
     [Header("Status")]
     [SerializeField] float m_playerSpeed = 10f;
     [SerializeField] int m_playerHp = 0;
@@ -24,7 +27,7 @@ public class PlayerController : MonoBehaviour
     [SerializeField] GameObject m_muzzle = default;
     //[SerializeField] GameObject m_crosshair = default;
     [SerializeField] int m_maxBulletCount = 0;
-    int m_bulletCount = 10;
+    [SerializeField] int m_bulletCount = 10;
     
     public bool IsPlayerMoved
     {
@@ -94,20 +97,22 @@ public class PlayerController : MonoBehaviour
         Vector3 vec = new Vector3(h, v, 0);
         m_rb.velocity = vec.normalized * m_playerSpeed;
     }
-    void Fire1()
+    public void Fire1()
     {
         if (Input.GetButtonDown("Fire1") && m_bulletCount > 0)
         {
             Rigidbody obj = Instantiate(m_bullet, m_muzzle.transform.position, Quaternion.identity).GetComponent<Rigidbody>();
             obj.velocity = transform.rotation * Vector3.forward * m_bulletSpeed;
             m_bulletCount--;
+            UpdateBulletIcon();
         }
     }
-    void Fire2()//リロード
+    public void Fire2()//リロード
     {
         if (Input.GetButtonDown("Fire2"))
         {
             m_bulletCount = m_maxBulletCount;
+            ResetBulletIcon();
         }
     }
     void SpecialAttack()//もしm_fulledSp = trueなら必殺技がうてる。
@@ -137,6 +142,28 @@ public class PlayerController : MonoBehaviour
             m_playerHp--;
         }
     }
+    void UpdateBulletIcon()
+    {
+        for (int i = 0; i < m_bulletIcon.Length; i++)
+        {
+            if (m_bulletCount <= i)
+            {
+                m_bulletIcon[i].SetActive(false);
+            }
+            else
+            {
+                m_bulletIcon[i].SetActive(true);
+            }
+        }
+    }
+    void ResetBulletIcon()
+    {
+        for(int i = 0; i < m_bulletIcon.Length; i++)
+        {
+            m_bulletIcon[i].SetActive(true);
+        }
+    }
+
     private void OnDestroy()
     {
         if (Instance == this)
