@@ -23,4 +23,19 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/Scenes/ClearScene.unity
     guid: a8a3d648fedff664fa4638eed4620e26
+  - enabled: 1
+    path: Assets/Scenes/EveningAdv.unity
+    guid: 6f63a898c8594c048863c47000234063
+  - enabled: 1
+    path: Assets/Scenes/AdvNight.unity
+    guid: d937e609c9c76b247a01587462029dcb
+  - enabled: 1
+    path: Assets/Scenes/AdvMorning.unity
+    guid: 881e322ae33b3904da91beda685d1fdd
+  - enabled: 1
+    path: Assets/Scenes/GameOverScene.unity
+    guid: c6e8316379845fd438b313da55202d5a
+  - enabled: 1
+    path: Assets/Scenes/Explanation.unity
+    guid: f117b324cfab5c141ad4a9aab71994ef
   m_configObjects: {}

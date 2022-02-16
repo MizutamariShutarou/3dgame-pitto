@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 using DG.Tweening;
+using UnityEngine.SceneManagement;
 
 
 public class PlayerController : MonoBehaviour
@@ -100,7 +101,7 @@ public class PlayerController : MonoBehaviour
 
         if(this.transform.position.y < -10)
         {
-            Destroy(this.gameObject);
+            SceneChange.LoadScene("GameOverScene");
         }
     }
     void Move()

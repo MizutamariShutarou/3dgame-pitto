@@ -1,13 +1,18 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-using UnityEngine.SceneManagement;
 
-public class GoAdventure : MonoBehaviour
+public class AdvNight : MonoBehaviour
 {
     // Start is called before the first frame update
-    public void GoScene()
+    void Start()
     {
-        SceneManager.LoadScene("AdvMorning");
+        
+    }
+
+    // Update is called once per frame
+    void Update()
+    {
+        
     }
 }
