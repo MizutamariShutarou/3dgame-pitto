@@ -32,7 +32,7 @@ public class SpawnController : MonoBehaviour
         {
             return;
         }
-        if (m_stage.transform.position.z < m_spawnStartStagePos)
+        if (m_stage != null && m_stage.transform.position.z < m_spawnStartStagePos)
         {
             m_Spawned = true;
             StartCoroutine("SpawnEnemys");

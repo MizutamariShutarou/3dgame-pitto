@@ -30,7 +30,7 @@ public class ItemSpawnManager : MonoBehaviour
     {
         m_time += Time.deltaTime;
 
-        if (m_stage.transform.position.z <= m_spawnStartStagePos)
+        if (m_stage != null &&m_stage.transform.position.z <= m_spawnStartStagePos)
         {
             if (m_time > m_interval)
             {

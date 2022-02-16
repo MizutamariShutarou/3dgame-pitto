@@ -156,7 +156,7 @@ public class PlayerController : MonoBehaviour
 
     private void OnTriggerEnter(Collider other)//HP制
     {
-        if (other.gameObject.CompareTag("EnemyBullet"))
+        if (other.gameObject.CompareTag("EnemyBullet") || other.gameObject.CompareTag("BossBullet"))
         {
             HPController.Instance.ChangeValue(m_hpChangeValue);
             m_playerHp -= m_hpChangeValue;
