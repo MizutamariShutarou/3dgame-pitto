@@ -977,7 +977,7 @@ PrefabInstance:
     - target: {fileID: 7932741774861630381, guid: cfba8fdd722047c40b529eb48ae79f22,
         type: 3}
       propertyPath: m_bossHp
-      value: 10
+      value: 30
       objectReference: {fileID: 0}
     - target: {fileID: 7932741774861630381, guid: cfba8fdd722047c40b529eb48ae79f22,
         type: 3}

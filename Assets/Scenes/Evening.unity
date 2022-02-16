@@ -454,7 +454,7 @@ MonoBehaviour:
   m_stage: {fileID: 86432105}
   m_boss: {fileID: 0}
   maxEnemysNum: 1
-  m_spawnTime: 4
+  m_spawnTime: 3
   m_spawnStartStagePos: 1800
   m_stageEnd: -500
 --- !u!1 &705507993
@@ -819,7 +819,7 @@ MonoBehaviour:
   m_stage: {fileID: 86432105}
   m_boss: {fileID: 0}
   maxEnemysNum: 1
-  m_spawnTime: 3.5
+  m_spawnTime: 2.5
   m_spawnStartStagePos: 1800
   m_stageEnd: -500
 --- !u!4 &1200841295
@@ -902,7 +902,7 @@ MonoBehaviour:
   m_stage: {fileID: 86432105}
   m_boss: {fileID: 0}
   maxEnemysNum: 1
-  m_spawnTime: 3
+  m_spawnTime: 2
   m_spawnStartStagePos: 1800
   m_stageEnd: -500
 --- !u!4 &1651548905

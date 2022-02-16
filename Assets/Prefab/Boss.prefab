@@ -108,7 +108,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a0bf3b9f5a8b1ad4a80c6b66c7bd1ca8, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  m_bossHp: 10
+  m_bossHp: 30
   m_waitTime: 0.5
   m_bossBulletSpeed: 100
   m_firstDoMoveYPos: 230

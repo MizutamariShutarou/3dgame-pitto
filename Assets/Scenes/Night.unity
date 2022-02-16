@@ -474,7 +474,7 @@ MonoBehaviour:
   m_stage: {fileID: 86432105}
   m_boss: {fileID: 0}
   maxEnemysNum: 2
-  m_spawnTime: 3
+  m_spawnTime: 2.5
   m_spawnStartStagePos: 1800
   m_stageEnd: -500
 --- !u!1 &705507993
@@ -927,7 +927,7 @@ MonoBehaviour:
   m_stage: {fileID: 86432105}
   m_boss: {fileID: 0}
   maxEnemysNum: 1
-  m_spawnTime: 4
+  m_spawnTime: 2
   m_spawnStartStagePos: 1800
   m_stageEnd: -500
 --- !u!4 &1651548905
@@ -1498,12 +1498,12 @@ PrefabInstance:
     - target: {fileID: 4919105889846173661, guid: a5bb0fd13e6b0c948ba76fd26e363f66,
         type: 3}
       propertyPath: m_bulletSpeed
-      value: 70
+      value: 90
       objectReference: {fileID: 0}
     - target: {fileID: 4919105889846173661, guid: a5bb0fd13e6b0c948ba76fd26e363f66,
         type: 3}
       propertyPath: m_homingRange
-      value: 5
+      value: 3
       objectReference: {fileID: 0}
     - target: {fileID: 4919105889846173662, guid: a5bb0fd13e6b0c948ba76fd26e363f66,
         type: 3}
