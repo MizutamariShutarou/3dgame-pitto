@@ -30,8 +30,9 @@ public class EnemyController : MonoBehaviour
     [SerializeField] float m_doMoveYTime = 0;
     [SerializeField] float m_thirdDelayTime = 0;
 
-    [SerializeField] GameObject m_enemyBullet;
-    [SerializeField] GameObject m_player;
+    [SerializeField] GameObject m_enemyBullet = default;
+    [SerializeField] GameObject m_player = default;
+    [SerializeField] GameObject m_boss = default;
     
     
     //bool isOutOfRange = true;
@@ -75,7 +76,7 @@ public class EnemyController : MonoBehaviour
         {
             transform.LookAt(m_player.transform);
         }
-        if (transform.position.y >= m_destroyPos)
+        if (transform.position.y >= m_destroyPos || m_boss != null && BossController.Instance.m_bossHp <= 0)
         {
             Destroy(this.gameObject);
         }

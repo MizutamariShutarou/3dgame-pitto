@@ -12,6 +12,8 @@ public class PlayerController : MonoBehaviour
     [SerializeField] Renderer m_playerRenderer;
     [SerializeField] Renderer m_muzzleRenderer;
     [SerializeField] GameObject[] m_enemys = default;
+    [SerializeField] GameObject m_boss = default;
+    [SerializeField] float m_spDamage = default;
     //[SerializeField] GameObject m_enemyBullet = default;
     [SerializeField] GameObject effectPrefab;
     [SerializeField] GameObject[] m_bulletIcon = default;
@@ -66,6 +68,7 @@ public class PlayerController : MonoBehaviour
         m_rb = GetComponent<Rigidbody>();
         //isOutRange = true;
         m_isPlayerMoved = true;
+        
         
     }
 
@@ -128,6 +131,7 @@ public class PlayerController : MonoBehaviour
             if (SpecialGage.Instance.IsFulledSp)//100になったらtrueになって必殺技が打てる(撃った後はfalseに)
             {
                 SpecialGage.Instance.ResetValue();
+                m_boss = GameObject.FindGameObjectWithTag("Boss");
                 m_enemys = GameObject.FindGameObjectsWithTag("Enemy");
                 foreach (GameObject e in m_enemys)
                 {
@@ -135,6 +139,11 @@ public class PlayerController : MonoBehaviour
 
                     //GameObject effect = Instantiate(effectPrefab, e.transform.position, Quaternion.identity);
                     //Destroy(effect, 0.5f);
+                }
+                if(m_boss != null)
+                {
+                    //m_boss = GetComponent<BossController>().m_bossHp -= m_spDamage;
+                    BossController.Instance.m_bossHp -= m_spDamage;
                 }
                 
             }
@@ -166,7 +175,7 @@ public class PlayerController : MonoBehaviour
             if (HPController.Instance.HpValue < 10)
             {
                 m_playerHp += m_hpChangeValue;
-                HPController.Instance.ChangeValue(m_hpChangeValue);
+                HPController.Instance.ChangeValue(-m_hpChangeValue);
             }
         }
     }

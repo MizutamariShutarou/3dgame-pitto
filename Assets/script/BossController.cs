@@ -7,7 +7,7 @@ public class BossController : MonoBehaviour
     //[SerializeField] float m_withinRange = 0;
 
     [Header("Status")]
-    [SerializeField] float m_bossHp = 0;
+    [SerializeField] public float m_bossHp = 0;
     
     [SerializeField] float m_waitTime = 0;
     [SerializeField] public float m_bossBulletSpeed = 0;
@@ -49,6 +49,12 @@ public class BossController : MonoBehaviour
     //bool isOutOfRange = true;
 
     Rigidbody m_bossRb = default;
+
+    public static BossController Instance { get; set; }
+    private void Awake()
+    {
+        Instance = this;
+    }
     //Start is called before the first frame update
     void Start()
     {

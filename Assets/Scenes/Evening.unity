@@ -190,8 +190,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   m_itemPrefab: {fileID: 1809383191459168106, guid: 3aeec11cb5970424ebc8ac24685aaabb,
     type: 3}
-  m_minTime: 10
-  m_maxTime: 15
+  m_minTime: 8
+  m_maxTime: 8
   m_xMinPosition: -55
   m_xMaxPosition: -45
   m_yMinPosition: 55

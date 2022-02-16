@@ -12,6 +12,7 @@ TagManager:
   - Muzzle
   - Heal
   - BossBullet
+  - Boss
   layers:
   - Default
   - TransparentFX

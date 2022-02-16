@@ -512,13 +512,13 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 705507993}
-  m_LocalRotation: {x: 0.12371782, y: 0.4314895, z: -0.059874125, w: 0.8915862}
+  m_LocalRotation: {x: 0.122245446, y: 0.45275986, z: -0.06282563, w: 0.88097537}
   m_LocalPosition: {x: 0, y: 3, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
   m_RootOrder: 1
-  m_LocalEulerAnglesHint: {x: 15.8, y: 51.65, z: 0}
+  m_LocalEulerAnglesHint: {x: 15.8, y: 54.4, z: 0}
 --- !u!1001 &913319903
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -936,6 +936,11 @@ PrefabInstance:
     - target: {fileID: 3462013089322138168, guid: cfba8fdd722047c40b529eb48ae79f22,
         type: 3}
       propertyPath: m_Name
+      value: Boss
+      objectReference: {fileID: 0}
+    - target: {fileID: 3462013089322138168, guid: cfba8fdd722047c40b529eb48ae79f22,
+        type: 3}
+      propertyPath: m_TagString
       value: Boss
       objectReference: {fileID: 0}
     - target: {fileID: 3755883024838585642, guid: cfba8fdd722047c40b529eb48ae79f22,
@@ -1438,12 +1443,22 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 6186591876491466657, guid: 395fcfd255b65c441b66c3634bfef89b,
         type: 3}
+      propertyPath: m_boss
+      value: 
+      objectReference: {fileID: 1332638038}
+    - target: {fileID: 6186591876491466657, guid: 395fcfd255b65c441b66c3634bfef89b,
+        type: 3}
       propertyPath: m_image
       value: 
       objectReference: {fileID: 554462416}
     - target: {fileID: 6186591876491466657, guid: 395fcfd255b65c441b66c3634bfef89b,
         type: 3}
       propertyPath: m_playerHp
+      value: 10
+      objectReference: {fileID: 0}
+    - target: {fileID: 6186591876491466657, guid: 395fcfd255b65c441b66c3634bfef89b,
+        type: 3}
+      propertyPath: m_spDamage
       value: 10
       objectReference: {fileID: 0}
     - target: {fileID: 6186591876491466657, guid: 395fcfd255b65c441b66c3634bfef89b,

@@ -5,9 +5,10 @@ using System.Linq;
 
 public class SpawnController : MonoBehaviour
 {
-    [SerializeField] GameObject[] m_enemys;
-    [SerializeField] GameObject m_stage;
-    [SerializeField] int maxEnemysNum;
+    [SerializeField] GameObject[] m_enemys = default;
+    [SerializeField] GameObject m_stage = default;
+    [SerializeField] GameObject m_boss = default;
+    [SerializeField] int maxEnemysNum = default;
     private int enemysNum;
 
     [SerializeField] float m_spawnTime;
@@ -32,12 +33,13 @@ public class SpawnController : MonoBehaviour
         {
             return;
         }
-        if (m_stage != null && m_stage.transform.position.z < m_spawnStartStagePos)
+        if (m_stage != null && m_stage.transform.position.z < m_spawnStartStagePos || m_boss != null && BossController.Instance.m_bossHp > 0)
         {
             m_Spawned = true;
             StartCoroutine("SpawnEnemys");
             AppearEnemys();
         }
+        
     }
 
     void AppearEnemys()
