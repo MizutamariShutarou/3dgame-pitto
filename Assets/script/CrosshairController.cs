@@ -8,14 +8,12 @@ public class CrosshairController : MonoBehaviour
     [SerializeField] Vector3 m_targetPos;
     [SerializeField] Image m_aimImage;
     //GameObject hitObj = default;
-    GameObject m_player = default;
-    GameObject m_wall = default;
+    //GameObject m_player = default;
+    //GameObject m_wall = default;
     
     private void Start()
     {
-        m_player = GameObject.FindWithTag("Player");
-        m_wall = GameObject.FindWithTag("Wall");
-
+        //m_player = GameObject.FindWithTag("Player");
     }
     void OnEnable()
     {
@@ -36,9 +34,6 @@ public class CrosshairController : MonoBehaviour
 
         // MainCameraからマウスの位置にRayを飛ばす
         Ray ray = Camera.main.ScreenPointToRay(Input.mousePosition);
-        //m_targetPos.z = 100;
-
-        //Vector3 dir = 
 
         if (Physics.Raycast(ray, out hit))
         {
@@ -51,39 +46,13 @@ public class CrosshairController : MonoBehaviour
                 // 照準器を赤色に変化させる。
                 //Debug.Log("Enemy");
                 m_aimImage.color = new Color(1.0f, 0.0f, 0.0f, 1.0f);
-
-                GameObject get = hit.collider.gameObject;
-
-                Vector3 v = m_player.transform.position - get.transform.position;
-                float angle = Mathf.Atan2(v.x, v.z) * Mathf.Rad2Deg;
-                float angle2 = Mathf.Atan2(v.x, v.y) * Mathf.Rad2Deg;
-                float angle3 = Mathf.Atan2(v.y, v.z) * Mathf.Rad2Deg;
-                Quaternion q = Quaternion.Euler(angle3, angle, angle2);
-                m_player.transform.localRotation = q;
             }
             else
             {
                 // 照準器の色は白
-
                 m_aimImage.color = new Color(1.0f, 1.0f, 1.0f, 1.0f);
-
             }
-            //else if (hit.transform.CompareTag("Wall"))//wallにRayがあたった時は
-            //{
-            //    // 照準器の色は白
-            //    //Debug.Log("Wall");
-            //    m_aimImage.color = new Color(1.0f, 1.0f, 1.0f, 1.0f);
-
-            //    //GameObject get = hit.collider.gameObject;
-
-            //    Vector3 v = m_player.transform.position - m_wall.transform.position;
-            //    float angle = Mathf.Atan2(v.x, v.z) * Mathf.Rad2Deg;//x,zの角度からyを取得
-            //    float angle2 = Mathf.Atan2(v.x, v.y) * Mathf.Rad2Deg;//xとyの角度からzを取得
-            //    float angle3 = Mathf.Atan2(v.y, v.z) * Mathf.Rad2Deg;//yとzの角度からｘを取得
-            //    Quaternion q = Quaternion.Euler(angle3, angle, angle2);
-            //    m_player.transform.localRotation = q;
-            //}
-
+            
         }
         
 

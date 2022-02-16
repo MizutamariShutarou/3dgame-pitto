@@ -8,22 +8,17 @@ public class ReloadTimeController : MonoBehaviour
     [SerializeField] Slider m_reloadSlider = default;
     float m_reloadMaxValue = 1f;
     [SerializeField] float m_changeTime;
-    public bool m_isReloated;
-    [SerializeField] float m_time = 0;
-    //public bool IsReloaded
-    //{
-    //    get
-    //    {
-    //        return m_isReloated;
-    //    }
-    //    set
-    //    {
-    //        m_isReloated = value;
-    //    }
-    //}
+    public static ReloadTimeController Instance { get; private set; } = default;
 
-    //public static ReloadTimeController Instance { get; private set; } = default;
-    // Start is called before the first frame update
+    private void Awake()
+    {
+        if (Instance is null)
+        {
+            Instance = this;
+            return;
+        }
+        Destroy(this);
+    }
     void Start()
     {
         m_reloadSlider.value = 0;
@@ -32,23 +27,20 @@ public class ReloadTimeController : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        Fire2();
+        
     }
 
-    void Fire2()
+    public void StartReloadTime()//リロード中のラグを表示。ラグが終わったらm_reloadSlider.valueを0に戻す
     {
-        if (Input.GetButtonDown("Fire2") && !m_isReloated)
+        DOTween.To(() => m_reloadSlider.value, x => m_reloadSlider.value = x, m_reloadMaxValue, m_changeTime).OnComplete(() => m_reloadSlider.value = 0);
+    }
+    private void OnDestroy()
+    {
+        if (Instance == this)
         {
-            m_isReloated = true;
-            DOTween.To(() => m_reloadSlider.value, x => m_reloadSlider.value = x, m_reloadMaxValue, m_changeTime);
-            if(m_isReloated && m_reloadSlider.value == m_reloadMaxValue)
-            {
-                m_reloadSlider.value = 0;
-            }
+            Instance = null;
         }
-        m_isReloated = false;
     }
 
-    
 }
 

@@ -62,9 +62,7 @@ public class PlayerController : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        //　課題　具体的な数字→メンバー変数で作り直してシステムを組み立てる
         m_rb = GetComponent<Rigidbody>();
-        
         //isOutRange = true;
         m_isPlayerMoved = true;
         
@@ -83,7 +81,7 @@ public class PlayerController : MonoBehaviour
             transform.rotation = Quaternion.LookRotation(ray.direction);
         }
 
-        if (m_playerHp <= 0)//死んだとき
+        if (m_playerHp <= 0)//死んだとき色かわって回転しながら落ちていく
         {
             m_isPlayerMoved = false;
             m_playerRenderer.material.color = Color.red;
@@ -106,7 +104,7 @@ public class PlayerController : MonoBehaviour
     }
     public void Fire1()
     {
-        if (Input.GetButtonDown("Fire1") && m_bulletCount > 0 && !m_isReloaded)
+        if (Input.GetButtonDown("Fire1") && m_bulletCount > 0 && !m_isReloaded)//!m_isReloadedの追加でリロード時のラグ発生中に撃てないようにする
         {
             Rigidbody obj = Instantiate(m_bullet, m_muzzle.transform.position, Quaternion.identity).GetComponent<Rigidbody>();
             obj.velocity = transform.rotation * Vector3.forward * m_bulletSpeed;
@@ -118,16 +116,17 @@ public class PlayerController : MonoBehaviour
     {
         if (Input.GetButtonDown("Fire2") && !m_isReloaded && m_bulletCount < m_maxBulletCount)
         {
-            StartCoroutine("StartReload");
+            StartCoroutine("StartReload");//ラグの開始
+            ReloadTimeController.Instance.StartReloadTime();
         }
     }
     void SpecialAttack()//もしm_fulledSp = trueなら必殺技がうてる。
     {
         if (Input.GetKeyDown("space"))
         {
-            SpecialGage.Instance.ResetValue();
             if (SpecialGage.Instance.IsFulledSp)//100になったらtrueになって必殺技が打てる(撃った後はfalseに)
             {
+                SpecialGage.Instance.ResetValue();
                 m_enemys = GameObject.FindGameObjectsWithTag("Enemy");
                 foreach (GameObject e in m_enemys)
                 {
@@ -140,7 +139,7 @@ public class PlayerController : MonoBehaviour
             }
         }
     }
-    IEnumerator StartReload()
+    IEnumerator StartReload()//リロード時にラグ(次撃てるようになるまでの待機時間)を設ける
     {
         m_isReloaded = true;
         while(m_isReloaded)
@@ -170,7 +169,7 @@ public class PlayerController : MonoBehaviour
             }
         }
     }
-    void UpdateBulletIcon()
+    void UpdateBulletIcon()//弾をうつと段数が減っていく
     {
         for (int i = 0; i < m_bulletIcon.Length; i++)
         {
@@ -184,7 +183,7 @@ public class PlayerController : MonoBehaviour
             }
         }
     }
-    void ResetBulletIcon()
+    void ResetBulletIcon()//リロード時に段数表示を戻す
     {
         for(int i = 0; i < m_bulletIcon.Length; i++)
         {
@@ -199,6 +198,7 @@ public class PlayerController : MonoBehaviour
             Instance = null;
         }
     }
+
 
 
 

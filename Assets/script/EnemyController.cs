@@ -14,22 +14,6 @@ public class EnemyController : MonoBehaviour
     [SerializeField] float m_spChargeValue;
     public float m_enemyBulletSpeed = 0;
 
-    //[Header("FirstMove")]
-    //[SerializeField] float m_firstDoMoveYPos = 0;
-    //[SerializeField] float m_firstDoMoveYTime = 0;
-    //[SerializeField] float m_firstDelayTime = 0;
-    //[SerializeField] float m_firstDoMoveXPos = 0;
-    //[SerializeField] float m_firstDoMoveXTime = 0;
-    //[Header("SecondMove")]
-    //[SerializeField] float m_doMoveXPos = 0;
-    //[SerializeField] float m_doMoveXTime = 0;
-    //[SerializeField] float m_secondDelayTime = 0;
-
-    //[Header("LastMove")]
-    //[SerializeField] float m_doMoveY = 0;
-    //[SerializeField] float m_doMoveYTime = 0;
-    //[SerializeField] float m_thirdDelayTime = 0;
-
     [Header("FirstMove")]
     [SerializeField] float m_firstDoMoveYPos = 0;
     [SerializeField] float m_firstDoMoveYTime = 0;
@@ -69,7 +53,7 @@ public class EnemyController : MonoBehaviour
         //    .Append(this.transform.gameObject.GetComponent<Rigidbody>().DOMoveX(m_doMoveXPos, m_doMoveXTime).SetDelay(m_secondDelayTime)).SetRelative(true)
         //    .Append(this.transform.DOMoveY(m_doMoveY, m_doMoveYTime).SetDelay(m_thirdDelayTime).SetLink(this.gameObject));
 
-        DOTween.Sequence()
+        DOTween.Sequence()//よりランダム性を追加
             .Append(this.transform.gameObject.GetComponent<Rigidbody>().DOMoveY(Random.Range(-m_firstDoMoveYPos,m_firstDoMoveYPos), Random.Range(0, m_firstDoMoveYTime)).SetRelative(true))
             .Join(this.transform.gameObject.GetComponent<Rigidbody>().DOMoveX(Random.Range(-m_firstDoMoveXPos, m_firstDoMoveXPos), Random.Range(0, m_firstDoMoveXTime)).SetDelay(Random.Range(1, m_firstDelayTime))).SetRelative(true)
             .Append(this.transform.gameObject.GetComponent<Rigidbody>().DOMoveX(Random.Range(-m_doMoveXPos, m_doMoveXPos), Random.Range(-m_doMoveXTime, m_doMoveXTime)).SetDelay(Random.Range(1, m_secondDelayTime))).SetRelative(true)
@@ -86,7 +70,7 @@ public class EnemyController : MonoBehaviour
 
         m_enemyRb.velocity = Vector3.back * m_enemySpeed;
 
-        if (m_player != null)
+        if (m_player != null)//m_playerがnullじゃなければplayerの報を向く
         {
             transform.LookAt(m_player.transform);
         }
@@ -100,20 +84,17 @@ public class EnemyController : MonoBehaviour
     {
         while (true)
         {
-            //Debug.Log("コルーチンスタート"); //　課題　画面内に敵オブジェクトが現れたらコルーチン開始にしたい
             yield return new WaitForSeconds(m_waitTime);
             Rigidbody obj = Instantiate(m_enemyBullet, transform.position, Quaternion.identity).GetComponent<Rigidbody>();
             obj.velocity = transform.rotation * Vector3.forward * m_enemyBulletSpeed;
-            if (transform.position.y > m_breakPos) yield break; //Debug.Log("打ち終わり");
+            if (transform.position.y > m_breakPos) yield break; //打ち終わり
         }
     }
     private void OnTriggerEnter(Collider other)
     {
         if (other.gameObject.CompareTag("Bullet"))
         {
-            //SpecialGage sp = GameObject.FindObjectOfType<SpecialGage>();　//上手く動かない
             SpecialGage.Instance.ChangeValue(m_spChargeValue);
-            //sp.ChangeValue(10f);
             Destroy(this.gameObject);
         }
     }
