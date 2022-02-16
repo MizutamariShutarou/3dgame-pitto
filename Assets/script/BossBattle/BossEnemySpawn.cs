@@ -34,7 +34,7 @@ public class BossEnemySpawn : MonoBehaviour
         {
             return;
         }
-        if (m_stage != null && m_stage.transform.position.z < m_spawnStartStagePos)
+        if (m_stage != null && m_stage.transform.position.z < m_spawnStartStagePos && BossController.Instance.m_bossHp > 0)
         {
             m_Spawned = true;
             StartCoroutine("SpawnEnemys");
@@ -42,7 +42,7 @@ public class BossEnemySpawn : MonoBehaviour
         }
         if(m_boss != BossController.Instance.m_bossHp <= 0 || !PlayerController.Instance.IsPlayerMoved)
         {
-            Destroy(gameObject);
+            StopCoroutine("SpawnEnwmy");
         }
         
 
