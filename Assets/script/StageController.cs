@@ -4,9 +4,12 @@ using UnityEngine;
 
 public class StageController : MonoBehaviour
 {
-    [SerializeField] float m_stageSpeed =0f;
+    [SerializeField] GameObject m_stage = default;
+    [SerializeField] float m_stageSpeed = 0f;
+    [SerializeField] float m_startStageRotationPos = 0;
+    [SerializeField] float m_goalPos = 0;
     Rigidbody m_stageRb = default;
-
+    
     bool isMoved = true;
     // Start is called before the first frame update
     void Start()
@@ -20,24 +23,21 @@ public class StageController : MonoBehaviour
     {
         if(PlayerController.Instance.IsPlayerMoved)
         {
-            m_stageRb.velocity = m_stageRb.transform.position.normalized * m_stageSpeed;
+            m_stageRb.velocity = Vector3.back * m_stageSpeed;
+            //if (m_stage.transform.position.z < m_startStageRotationPos)
+            //{
+            //    m_stageRb.angularVelocity = new Vector3(-0.f, 0, 0);
+            //}
         }
         else if(!PlayerController.Instance.IsPlayerMoved)
         {
             m_stageRb.velocity = m_stageRb.transform.position.normalized * 0;
             m_stageRb.angularVelocity = Vector3.zero;
         }
-        
-        if(transform.position.z < -540 && PlayerController.Instance.IsPlayerMoved)
-        {
-            m_stageRb.angularVelocity = new Vector3(-0.04f, 0, 0);
-        }
 
-        else if(transform.rotation.z > -60)
-        {
-
-        }
-
-        //if (transform.rotation.z < -200) isMoved = false;
+        //if (transform.position.z < m_goalPos(-705f))
+        //{
+        //    //goal
+        //}
     }
 }

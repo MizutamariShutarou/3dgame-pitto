@@ -17,6 +17,8 @@ public class ItemSpawnManager : MonoBehaviour
     [SerializeField] float m_zMaxPosition = 20f;
     [SerializeField] float m_interval;
     [SerializeField] float m_time = 0f;
+    [SerializeField] GameObject m_stage = default;
+    [SerializeField] float m_spawnStartStagePos = 0;
 
     void Start()
     {
@@ -28,12 +30,15 @@ public class ItemSpawnManager : MonoBehaviour
     {
         m_time += Time.deltaTime;
 
-        if (m_time > m_interval)
+        if (m_stage.transform.position.z <= m_spawnStartStagePos)
         {
-            GameObject item = Instantiate(m_itemPrefab);
-            item.transform.position = GetRandomPosition();
-            m_time = 0f;
-            m_interval = GetRandomTime();
+            if (m_time > m_interval)
+            {
+                GameObject item = Instantiate(m_itemPrefab);
+                item.transform.position = GetRandomPosition();
+                m_time = 0f;
+                m_interval = GetRandomTime();
+            }
         }
     }
     private float GetRandomTime()

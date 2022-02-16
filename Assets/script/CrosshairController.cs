@@ -41,13 +41,13 @@ public class CrosshairController : MonoBehaviour
             m_targetPos = hit.point;
             //print(m_targetPos);
 
-            if (hit.transform.CompareTag("Enemy"))
+            if(hit.transform.CompareTag("Enemy"))
             {
                 // 照準器を赤色に変化させる。
                 //Debug.Log("Enemy");
                 m_aimImage.color = new Color(1.0f, 0.0f, 0.0f, 1.0f);
             }
-            else
+            else if(hit.transform.CompareTag("Wall"))
             {
                 // 照準器の色は白
                 m_aimImage.color = new Color(1.0f, 1.0f, 1.0f, 1.0f);

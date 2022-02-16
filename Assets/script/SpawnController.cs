@@ -11,6 +11,7 @@ public class SpawnController : MonoBehaviour
     private int enemysNum;
 
     [SerializeField] float m_spawnTime;
+    [SerializeField] float m_spawnStartStagePos = 0;
     [SerializeField] float m_stageEnd;
     bool m_Spawned;
     
@@ -23,6 +24,7 @@ public class SpawnController : MonoBehaviour
     }
 
     // Update is called once per frame
+    
     void Update()
     {
         var random = Random.Range(0, m_enemys.Length - 1);
@@ -30,7 +32,7 @@ public class SpawnController : MonoBehaviour
         {
             return;
         }
-        if (m_stage.transform.position.z < -120)
+        if (m_stage.transform.position.z < m_spawnStartStagePos)
         {
             m_Spawned = true;
             StartCoroutine("SpawnEnemys");

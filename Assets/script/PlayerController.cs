@@ -19,12 +19,13 @@ public class PlayerController : MonoBehaviour
     [SerializeField] ItemSpawnManager m_itemSpawnController = default;
     [SerializeField] float m_waitTime = 0;
     [SerializeField] float m_reloadChangeValue = 0;
+    [SerializeField] float m_hpChangeValue;
     
     bool m_isReloaded;
     
     [Header("Status")]
     [SerializeField] float m_playerSpeed = 10f;
-    [SerializeField] public int m_playerHp = 0;
+    [SerializeField] public float m_playerHp = 0;
     //[SerializeField] bool isOutRange = true;//playerの移動範囲の制御
     bool m_isPlayerMoved = true;
     
@@ -131,7 +132,7 @@ public class PlayerController : MonoBehaviour
                 foreach (GameObject e in m_enemys)
                 {
                     Destroy(e);
-                    
+
                     //GameObject effect = Instantiate(effectPrefab, e.transform.position, Quaternion.identity);
                     //Destroy(effect, 0.5f);
                 }
@@ -157,15 +158,15 @@ public class PlayerController : MonoBehaviour
     {
         if (other.gameObject.CompareTag("EnemyBullet"))
         {
-            HPController.Instance.ChangeValue(1f);
-            m_playerHp--;
+            HPController.Instance.ChangeValue(m_hpChangeValue);
+            m_playerHp -= m_hpChangeValue;
         }
         else if (other.gameObject.CompareTag("Heal"))
         {
             if (HPController.Instance.HpValue < 10)
             {
-                m_playerHp++;
-                HPController.Instance.ChangeValue(-1f);
+                m_playerHp += m_hpChangeValue;
+                HPController.Instance.ChangeValue(m_hpChangeValue);
             }
         }
     }

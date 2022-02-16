@@ -41,6 +41,7 @@ public class EnemyController : MonoBehaviour
     void Start()
     {
         m_spChargeValue = GameManager.Instance.m_spValue;
+        m_enemyBulletSpeed = GameManager.Instance.m_bulletSpeed;
         //isOutOfRange = false;
         m_enemyRb = GetComponent<Rigidbody>();
         m_player = GameObject.Find("Player");

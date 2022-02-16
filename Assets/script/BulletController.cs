@@ -19,6 +19,7 @@ public class BulletController : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
+        m_radius = GameManager.Instance.m_homingRange;
         Rigidbody rb = GetComponent<Rigidbody>();
         m_enemyMuzzle = GameObject.Find("Muzzle");
     }
