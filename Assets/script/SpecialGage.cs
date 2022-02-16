@@ -13,7 +13,8 @@ public class SpecialGage : MonoBehaviour
     [SerializeField] float m_changeTime;
     float m_time;
     public bool m_isFulledSp = false;
-
+    [SerializeField] public AudioClip m_special;
+    AudioSource audioSource;
     public float SpecialValue { get; private set; }
     public bool IsFulledSp
     {
@@ -41,6 +42,7 @@ public class SpecialGage : MonoBehaviour
 
     void Start()
     {
+        audioSource = GetComponent<AudioSource>();
         m_spSlider = GameObject.Find("SpecialGage").GetComponent<Slider>();
         m_spSlider.value = 0;
         m_isFulledSp = false;

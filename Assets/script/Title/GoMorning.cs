@@ -5,10 +5,16 @@ using UnityEngine.SceneManagement;
 
 public class GoMorning : MonoBehaviour
 {
-    // Start is called before the first frame update
-    
+    //AudioSource audioSource;
+    //[SerializeField] public AudioClip m_push;
+    //// Start is called before the first frame update
+    //public void Oudio()
+    //{
+    //    audioSource.PlayOneShot(m_push);
+    //}
     public void GoScene()
     {
+        
         SceneManager.LoadScene("Morning");
     }
 }

@@ -4,9 +4,11 @@ using UnityEngine;
 using UnityEngine.SceneManagement;
 public class GoNight : MonoBehaviour
 {
-    // Start is called before the first frame update
+    AudioSource audioSource;
+    [SerializeField] public AudioClip m_push;
     public void GoScene()
     {
+        //audioSource.PlayOneShot(m_push);
         SceneManager.LoadScene("Night");
     }
 }

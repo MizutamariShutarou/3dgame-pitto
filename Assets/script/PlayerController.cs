@@ -24,7 +24,14 @@ public class PlayerController : MonoBehaviour
     [SerializeField] float m_reloadChangeValue = 0;
     [SerializeField] float m_hpChangeValue;
     [SerializeField] GameManager m_gameManager;
-    
+    [SerializeField] public AudioClip m_fire1;
+    [SerializeField] public AudioClip m_fire2;
+    [SerializeField] public AudioClip m_space;
+    [SerializeField] public AudioClip m_damege;
+    [SerializeField] public AudioClip m_heal;
+
+    AudioSource audioSource;
+
 
     bool m_isReloaded;
     
@@ -73,8 +80,8 @@ public class PlayerController : MonoBehaviour
         m_rb = GetComponent<Rigidbody>();
         //isOutRange = true;
         m_isPlayerMoved = true;
-        
-        
+        audioSource = GetComponent<AudioSource>();
+
     }
 
     // Update is called once per frame
@@ -110,11 +117,16 @@ public class PlayerController : MonoBehaviour
         float v = Input.GetAxisRaw("Vertical");
         Vector3 vec = new Vector3(h, v, 0);
         m_rb.velocity = vec.normalized * m_playerSpeed;
+        //if(SpecialGage.Instance.IsFulledSp)
+        //{
+        //    audioSource.PlayOneShot(m_specialCharged);
+        //}
     }
     public void Fire1()
     {
         if (Input.GetButtonDown("Fire1") && m_bulletCount > 0 && !m_isReloaded)//!m_isReloadedの追加でリロード時のラグ発生中に撃てないようにする
         {
+            audioSource.PlayOneShot(m_fire1);
             Rigidbody obj = Instantiate(m_bullet, m_muzzle.transform.position, Quaternion.identity).GetComponent<Rigidbody>();
             obj.velocity = transform.rotation * Vector3.forward * m_bulletSpeed;
             m_bulletCount--;
@@ -125,6 +137,7 @@ public class PlayerController : MonoBehaviour
     {
         if (Input.GetButtonDown("Fire2") && !m_isReloaded && m_bulletCount < m_maxBulletCount)
         {
+            audioSource.PlayOneShot(m_fire2);
             StartCoroutine("StartReload");//ラグの開始
             ReloadTimeController.Instance.StartReloadTime();
         }
@@ -135,6 +148,7 @@ public class PlayerController : MonoBehaviour
         {
             if (SpecialGage.Instance.IsFulledSp)//100になったらtrueになって必殺技が打てる(撃った後はfalseに)
             {
+                audioSource.PlayOneShot(m_space);
                 SpecialGage.Instance.ResetValue();
                 m_boss = GameObject.FindGameObjectWithTag("Boss");
                 m_enemys = GameObject.FindGameObjectsWithTag("Enemy");
@@ -172,6 +186,7 @@ public class PlayerController : MonoBehaviour
     {
         if (other.gameObject.CompareTag("EnemyBullet") || other.gameObject.CompareTag("BossBullet"))
         {
+            audioSource.PlayOneShot(m_damege);
             HPController.Instance.ChangeValue(m_hpChangeValue);
             m_playerHp -= m_hpChangeValue;
         }
@@ -179,6 +194,7 @@ public class PlayerController : MonoBehaviour
         {
             if (HPController.Instance.HpValue < 10)
             {
+                audioSource.PlayOneShot(m_heal);
                 m_playerHp += m_hpChangeValue;
                 HPController.Instance.ChangeValue(-m_hpChangeValue);
             }
