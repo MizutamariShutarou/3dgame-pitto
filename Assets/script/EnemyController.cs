@@ -12,7 +12,7 @@ public class EnemyController : MonoBehaviour
     [SerializeField] float m_destroyPos = 0;
     [SerializeField] float m_breakPos;
     [SerializeField] float m_spChargeValue;
-    public float m_enemyBulletSpeed = 0;
+    public float m_enemyBulletSpeed = 40;
 
     [Header("FirstMove")]
     [SerializeField] float m_firstDoMoveYPos = 0;

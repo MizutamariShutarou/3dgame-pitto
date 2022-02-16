@@ -22,7 +22,9 @@ public class PlayerController : MonoBehaviour
     [SerializeField] float m_waitTime = 0;
     [SerializeField] float m_reloadChangeValue = 0;
     [SerializeField] float m_hpChangeValue;
+    [SerializeField] GameManager m_gameManager;
     
+
     bool m_isReloaded;
     
     [Header("Status")]
@@ -54,6 +56,7 @@ public class PlayerController : MonoBehaviour
     public static PlayerController Instance { get; private set; } = default;
     private void Awake()
     {
+        
         if (Instance is null)
         {
             Instance = this;
@@ -65,6 +68,7 @@ public class PlayerController : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
+        //DontDestroyOnLoad(GameManager);
         m_rb = GetComponent<Rigidbody>();
         //isOutRange = true;
         m_isPlayerMoved = true;
