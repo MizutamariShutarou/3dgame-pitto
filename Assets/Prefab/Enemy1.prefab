@@ -145,6 +145,7 @@ MonoBehaviour:
     type: 3}
   m_player: {fileID: 6186591876491466587, guid: 395fcfd255b65c441b66c3634bfef89b,
     type: 3}
+  m_boss: {fileID: 3462013089322138168, guid: cfba8fdd722047c40b529eb48ae79f22, type: 3}
 --- !u!1001 &5007186245950007339
 PrefabInstance:
   m_ObjectHideFlags: 0

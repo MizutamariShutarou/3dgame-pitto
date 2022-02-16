@@ -13,9 +13,9 @@ GameObject:
   - component: {fileID: 6436869320033579687}
   - component: {fileID: 6436869320033579688}
   - component: {fileID: 6436869320033579689}
-  - component: {fileID: 6436869320033579683}
+  - component: {fileID: 4879574623442831581}
   m_Layer: 8
-  m_Name: Enemy2 (L)
+  m_Name: BossEnemy2 (L) 1
   m_TagString: Enemy
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -112,7 +112,7 @@ Rigidbody:
   m_Interpolate: 0
   m_Constraints: 0
   m_CollisionDetection: 0
---- !u!114 &6436869320033579683
+--- !u!114 &4879574623442831581
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -121,7 +121,7 @@ MonoBehaviour:
   m_GameObject: {fileID: 6436869320033579690}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 05d2c4dd9557bc84c991643dca25e211, type: 3}
+  m_Script: {fileID: 11500000, guid: 90576231bcddc6840a5081b807c221fc, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   m_enemySpeed: 3
@@ -141,7 +141,7 @@ MonoBehaviour:
   m_doMoveY: 90
   m_doMoveYTime: 2
   m_thirdDelayTime: 3
-  m_enemyBullet: {fileID: 6417620424232066193, guid: 7553015e4af6d0d4ea60b31f86549363,
+  m_enemyBullet: {fileID: 580098761734150666, guid: 57e192a32a1c53c4cb1b4e9515a8372e,
     type: 3}
   m_player: {fileID: 6186591876491466587, guid: 395fcfd255b65c441b66c3634bfef89b,
     type: 3}

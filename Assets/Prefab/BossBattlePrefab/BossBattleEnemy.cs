@@ -2,10 +2,10 @@
 using System.Collections.Generic;
 using UnityEngine;
 using DG.Tweening;
-public class EnemyController : MonoBehaviour
+public class BossBattleEnemy : MonoBehaviour
 {
     //[SerializeField] float m_withinRange = 0;
-    
+
     [Header("Status")]
     [SerializeField] float m_enemySpeed = 0f;
     [SerializeField] float m_waitTime = 0;
@@ -33,10 +33,10 @@ public class EnemyController : MonoBehaviour
     [SerializeField] GameObject m_enemyBullet = default;
     [SerializeField] GameObject m_player = default;
     [SerializeField] GameObject m_boss = default;
-    
-    
+
+
     //bool isOutOfRange = true;
-    
+
     Rigidbody m_enemyRb = default;
     //Start is called before the first frame update
     void Start()
@@ -46,7 +46,9 @@ public class EnemyController : MonoBehaviour
         //isOutOfRange = false;
         m_enemyRb = GetComponent<Rigidbody>();
         m_player = GameObject.Find("Player");
-        
+
+        //BossController.Instance.BossDeath += Death;
+
         StartCoroutine("BulletShot");
 
         //DOTween.Sequence()
@@ -56,7 +58,7 @@ public class EnemyController : MonoBehaviour
         //    .Append(this.transform.DOMoveY(m_doMoveY, m_doMoveYTime).SetDelay(m_thirdDelayTime).SetLink(this.gameObject));
 
         DOTween.Sequence()//よりランダム性を追加
-            .Append(this.transform.gameObject.GetComponent<Rigidbody>().DOMoveY(Random.Range(-m_firstDoMoveYPos,m_firstDoMoveYPos), Random.Range(0, m_firstDoMoveYTime)).SetRelative(true))
+            .Append(this.transform.gameObject.GetComponent<Rigidbody>().DOMoveY(Random.Range(-m_firstDoMoveYPos, m_firstDoMoveYPos), Random.Range(0, m_firstDoMoveYTime)).SetRelative(true))
             .Join(this.transform.gameObject.GetComponent<Rigidbody>().DOMoveX(Random.Range(-m_firstDoMoveXPos, m_firstDoMoveXPos), Random.Range(0, m_firstDoMoveXTime)).SetDelay(Random.Range(1, m_firstDelayTime))).SetRelative(true)
             .Append(this.transform.gameObject.GetComponent<Rigidbody>().DOMoveX(Random.Range(-m_doMoveXPos, m_doMoveXPos), Random.Range(-m_doMoveXTime, m_doMoveXTime)).SetDelay(Random.Range(1, m_secondDelayTime))).SetRelative(true)
             .Append(this.transform.DOMoveY(m_doMoveY, m_doMoveYTime).SetDelay(m_thirdDelayTime).SetLink(this.gameObject));
@@ -76,7 +78,7 @@ public class EnemyController : MonoBehaviour
         {
             transform.LookAt(m_player.transform);
         }
-        if (transform.position.y >= m_destroyPos)
+        if (transform.position.y >= m_destroyPos || m_boss != null && BossController.Instance.m_bossHp <= 0)
         {
             Destroy(this.gameObject);
         }
@@ -101,5 +103,9 @@ public class EnemyController : MonoBehaviour
         }
     }
 
-   
+    //void Death()//wjfwehfe9wcwえｐｊ０
+    //{
+    //    Destroy(this.gameObject);
+    //}
+
 }

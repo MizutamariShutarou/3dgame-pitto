@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class ItemSpawnManager : MonoBehaviour
+public class BossBattleItemSpawn : MonoBehaviour
 {
     [SerializeField] GameObject m_itemPrefab;
     //[SerializeField] GameObject m_player;
@@ -24,7 +24,8 @@ public class ItemSpawnManager : MonoBehaviour
     void Start()
     {
         m_interval = GetRandomTime();
-        
+        //BossController.Instance.BossDeath += Death;
+
     }
 
     void Update()
@@ -41,6 +42,11 @@ public class ItemSpawnManager : MonoBehaviour
                 m_interval = GetRandomTime();
             }
         }
+        if (m_boss != null && BossController.Instance.m_bossHp <= 0)
+        {
+            Destroy(gameObject);
+        }
+
     }
     private float GetRandomTime()
     {
@@ -54,5 +60,8 @@ public class ItemSpawnManager : MonoBehaviour
 
         return new Vector3(x, y, z);
     }
-    
+    //void Death()//wjfwehfe9wcwえｐｊ０
+    //{
+    //    Destroy(gameObject);
+    //}
 }

@@ -202,6 +202,7 @@ MonoBehaviour:
   m_time: 0
   m_stage: {fileID: 86432105}
   m_spawnStartStagePos: 1800
+  m_boss: {fileID: 0}
 --- !u!1 &385712560 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 3207202172088272640, guid: 69d2d363b2fa6994d9a04d1176bcc90d,
@@ -457,6 +458,7 @@ MonoBehaviour:
   - {fileID: 8059444222437071683, guid: b00176321c006004eafac8a614717c0a, type: 3}
   - {fileID: 7581179548974899709, guid: 046ab7c2e0945f345bb45f61baeb7c07, type: 3}
   m_stage: {fileID: 86432105}
+  m_boss: {fileID: 0}
   maxEnemysNum: 2
   m_spawnTime: 3
   m_spawnStartStagePos: 1800
@@ -821,6 +823,7 @@ MonoBehaviour:
   - {fileID: 2304512854597462883, guid: e0d6485c64a777b41ac558055215d222, type: 3}
   - {fileID: 5392873694129174264, guid: 2ca9e9a111e732146a7dd7fd09c00b99, type: 3}
   m_stage: {fileID: 86432105}
+  m_boss: {fileID: 0}
   maxEnemysNum: 1
   m_spawnTime: 2
   m_spawnStartStagePos: 1800
@@ -903,6 +906,7 @@ MonoBehaviour:
   - {fileID: 6436869320033579690, guid: 1cc46306e6cec774dabb8492b89b7d02, type: 3}
   - {fileID: 1862168521154330506, guid: b804a059b03eeae449a74da413ede437, type: 3}
   m_stage: {fileID: 86432105}
+  m_boss: {fileID: 0}
   maxEnemysNum: 1
   m_spawnTime: 2
   m_spawnStartStagePos: 1800

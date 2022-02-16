@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using System.Linq;
 
-public class SpawnController : MonoBehaviour
+public class BossEnemySpawn : MonoBehaviour
 {
     [SerializeField] GameObject[] m_enemys = default;
     [SerializeField] GameObject m_stage = default;
@@ -15,17 +15,18 @@ public class SpawnController : MonoBehaviour
     [SerializeField] float m_spawnStartStagePos = 0;
     [SerializeField] float m_stageEnd;
     bool m_Spawned;
-    
+
     // Start is called before the first frame update
     void Start()
     {
-        
+
         m_Spawned = false;
         enemysNum = 0;
+        //BossController.Instance.BossDeath += Death;
     }
 
     // Update is called once per frame
-    
+
     void Update()
     {
         var random = Random.Range(0, m_enemys.Length - 1);
@@ -39,7 +40,11 @@ public class SpawnController : MonoBehaviour
             StartCoroutine("SpawnEnemys");
             AppearEnemys();
         }
-        
+        else if (m_boss != null && BossController.Instance.m_bossHp <= 0)
+        {
+            Destroy(gameObject);
+        }
+
     }
 
     void AppearEnemys()
@@ -50,11 +55,15 @@ public class SpawnController : MonoBehaviour
     }
     IEnumerator SpawnEnemys()
     {
-        while(m_Spawned)
+        while (m_Spawned)
         {
             yield return new WaitForSeconds(m_spawnTime);
             AppearEnemys();
             if (m_stage.transform.position.z < m_stageEnd) yield break; //Debug.Log("打ち終わり");
         }
     }
+    //void Death()//wjfwehfe9wcwえｐｊ０
+    //{
+    //    Destroy(gameObject);
+    //}
 }

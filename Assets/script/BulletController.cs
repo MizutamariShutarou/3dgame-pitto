@@ -8,7 +8,7 @@ public class BulletController : MonoBehaviour
     [SerializeField] float m_bulletLifeTime = 10f;
     [SerializeField] GameObject m_enemyMuzzle = default;
     [SerializeField] GameObject[] m_enemys;
-    List<GameObject> m_enemyList = new List<GameObject>();
+    //List<GameObject> m_enemyList = new List<GameObject>();
     [SerializeField] float m_homingSpeed = 0;
     [SerializeField] float m_distance = 0;
 
@@ -47,7 +47,7 @@ public class BulletController : MonoBehaviour
     // Update is called once per frame
     private void OnTriggerEnter(Collider collision)
     {
-        if (collision.transform.CompareTag("Enemy") || collision.transform.CompareTag("Muzzle"))
+        if (collision.transform.CompareTag("Enemy") || m_enemyMuzzle != null && collision.transform.CompareTag("Muzzle"))
         {
             Destroy(gameObject);
         }

@@ -28,7 +28,7 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 6186591876491466587}
-  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: -3, z: 13}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
@@ -122,6 +122,8 @@ MonoBehaviour:
   - {fileID: 1862168521154330506, guid: b804a059b03eeae449a74da413ede437, type: 3}
   - {fileID: 5392873694129174264, guid: 2ca9e9a111e732146a7dd7fd09c00b99, type: 3}
   - {fileID: 7581179548974899709, guid: 046ab7c2e0945f345bb45f61baeb7c07, type: 3}
+  m_boss: {fileID: 3462013089322138168, guid: cfba8fdd722047c40b529eb48ae79f22, type: 3}
+  m_spDamage: 10
   effectPrefab: {fileID: 0}
   m_bulletIcon:
   - {fileID: 0}
@@ -139,6 +141,7 @@ MonoBehaviour:
   m_itemSpawnController: {fileID: 0}
   m_waitTime: 1
   m_reloadChangeValue: 1
+  m_hpChangeValue: 1
   m_playerSpeed: 10
   m_playerHp: 10
   m_bullet: {fileID: 7684152246458303726, guid: 3b5b00fe2125850419d24fdb1a05631a,

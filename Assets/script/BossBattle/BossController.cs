@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 using DG.Tweening;
+using System;
 public class BossController : MonoBehaviour
 {
     //[SerializeField] float m_withinRange = 0;
@@ -50,6 +51,10 @@ public class BossController : MonoBehaviour
 
     Rigidbody m_bossRb = default;
 
+    //public delegate void Ondeath();
+
+    //public Ondeath BossDeath;
+
     public static BossController Instance { get; set; }
     private void Awake()
     {
@@ -90,7 +95,7 @@ public class BossController : MonoBehaviour
         }
         if (m_bossHp <= 0)
         {
-            Destroy(this.gameObject);
+            Destroy(gameObject);
         }
     }
 
@@ -111,6 +116,11 @@ public class BossController : MonoBehaviour
             m_bossHp --;
         }
     }
+    //public void BossDestroy()
+    //{
+    //    BossDeath?.Invoke();
+    //    Destroy(this.gameObject);
+    //}
 }
 
    
