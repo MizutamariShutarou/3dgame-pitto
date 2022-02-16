@@ -33,6 +33,8 @@ public class EnemyController : MonoBehaviour
     [SerializeField] GameObject m_enemyBullet = default;
     [SerializeField] GameObject m_player = default;
     [SerializeField] GameObject m_boss = default;
+    [SerializeField] GameObject m_stage = default;
+    [SerializeField] float m_goalPos = 0;
     
     
     //bool isOutOfRange = true;
@@ -46,6 +48,7 @@ public class EnemyController : MonoBehaviour
         //isOutOfRange = false;
         m_enemyRb = GetComponent<Rigidbody>();
         m_player = GameObject.Find("Player");
+        m_stage = GameObject.Find("Stage");
         
         StartCoroutine("BulletShot");
 
@@ -78,12 +81,18 @@ public class EnemyController : MonoBehaviour
         }
         if (transform.position.y >= m_destroyPos)
         {
-            Destroy(this.gameObject);
+            EnemyDestroy();
         }
+        
         if(!PlayerController.Instance.IsPlayerMoved)
         {
             StopCoroutine("BulletShot");
             m_enemyRb.velocity = Vector3.back * 0;
+        }
+
+        if (m_stage.transform.position.z <= m_goalPos)
+        {
+            EnemyDestroy();
         }
     }
 
@@ -102,9 +111,15 @@ public class EnemyController : MonoBehaviour
         if (other.gameObject.CompareTag("Bullet"))
         {
             SpecialGage.Instance.ChangeValue(m_spChargeValue);
-            Destroy(this.gameObject);
+            EnemyDestroy();
         }
     }
 
-   
+    public void EnemyDestroy()
+    {
+        Destroy(gameObject);
+        //Debug.Log("d");
+    }
+
+
 }

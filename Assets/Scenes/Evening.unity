@@ -324,8 +324,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   m_stage: {fileID: 86432105}
   m_stageSpeed: 80
-  m_startStageRotationPos: 1000
-  m_goalPos: 0
+  m_goalPos: -5000
 --- !u!1 &538207874
 GameObject:
   m_ObjectHideFlags: 0
@@ -1081,7 +1080,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 6429287463251264, guid: a77f3979601d3694592c7479721c8d86, type: 3}
       propertyPath: m_Name
-      value: Stage1
+      value: Stage
       objectReference: {fileID: 0}
     - target: {fileID: 6429287866499155, guid: a77f3979601d3694592c7479721c8d86, type: 3}
       propertyPath: m_UseGravity
@@ -1099,6 +1098,10 @@ PrefabInstance:
       propertyPath: m_stage0
       value: 
       objectReference: {fileID: 86432105}
+    - target: {fileID: 6429287866499156, guid: a77f3979601d3694592c7479721c8d86, type: 3}
+      propertyPath: m_goalPos
+      value: -741
+      objectReference: {fileID: 0}
     - target: {fileID: 6429287866499156, guid: a77f3979601d3694592c7479721c8d86, type: 3}
       propertyPath: m_stageSpeed
       value: 80

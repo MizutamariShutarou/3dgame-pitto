@@ -119,6 +119,10 @@ public class BossController : MonoBehaviour
         if (other.gameObject.CompareTag("Bullet"))
         {
             m_bossHp --;
+            if(m_bossHp <= 0)
+            {
+                SceneChange.LoadScene("ClearScene");
+            }
         }
     }
     //public void BossDestroy()

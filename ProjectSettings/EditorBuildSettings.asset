@@ -18,6 +18,9 @@ EditorBuildSettings:
     path: Assets/Scenes/Night.unity
     guid: 4e5a004565d73e94ebd23269f511ed2a
   - enabled: 1
-    path: Assets/Scenes/BossBatlle.unity
+    path: Assets/Scenes/BossBattle.unity
     guid: 3c56fcdae260c29409baaa9d77edf628
+  - enabled: 1
+    path: Assets/Scenes/ClearScene.unity
+    guid: a8a3d648fedff664fa4638eed4620e26
   m_configObjects: {}

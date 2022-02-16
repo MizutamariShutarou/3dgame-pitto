@@ -146,6 +146,8 @@ MonoBehaviour:
   m_player: {fileID: 6186591876491466587, guid: 395fcfd255b65c441b66c3634bfef89b,
     type: 3}
   m_boss: {fileID: 3462013089322138168, guid: cfba8fdd722047c40b529eb48ae79f22, type: 3}
+  m_stage: {fileID: 6675633568522022382, guid: dca0e54a232272044a6a75c899445a2c, type: 3}
+  m_goalPos: -560
 --- !u!1001 &582105841558126862
 PrefabInstance:
   m_ObjectHideFlags: 0

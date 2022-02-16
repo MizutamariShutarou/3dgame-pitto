@@ -19,7 +19,7 @@ public class SpawnController : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        
+        m_stage = GameObject.Find("Stage");
         m_Spawned = false;
         enemysNum = 0;
     }
@@ -39,6 +39,10 @@ public class SpawnController : MonoBehaviour
             StartCoroutine("SpawnEnemys");
             AppearEnemys();
         }
+        if(PlayerController.Instance.m_playerHp <= 0 || m_stage.transform.position.z < m_stageEnd)
+        {
+            StopCoroutine("SpawnEnemys");
+        }
         
     }
 
@@ -54,7 +58,12 @@ public class SpawnController : MonoBehaviour
         {
             yield return new WaitForSeconds(m_spawnTime);
             AppearEnemys();
-            if (m_stage.transform.position.z < m_stageEnd) yield break; //Debug.Log("打ち終わり");
+            //if (m_stage.transform.position.z < m_stageEnd) yield break; //Debug.Log("打ち終わり");
         }
     }
+
+    //public void SpawnDestroy()
+    //{
+    //    Destroy(gameObject);
+    //}
 }
