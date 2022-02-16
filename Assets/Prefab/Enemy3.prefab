@@ -125,7 +125,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_enemySpeed: 2
-  m_waitTime: 2
+  m_waitTime: 1.5
   m_destroyPos: 90
   m_breakPos: 80
   m_spChargeValue: 10
