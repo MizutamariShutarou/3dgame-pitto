@@ -6,7 +6,7 @@ public class HealItemController : MonoBehaviour
 {
     [SerializeField] float m_itemSpeed = 0;
     [SerializeField] float m_healItemLifeTime = 0;
-    [SerializeField] GameObject m_boss = default; 
+    //[SerializeField] GameObject m_boss = default; 
     Rigidbody m_rb = default;
     void Start()
     {
@@ -18,7 +18,7 @@ public class HealItemController : MonoBehaviour
         m_rb.velocity = Vector3.back * m_itemSpeed;
         if(!PlayerController.Instance.IsPlayerMoved)
         {
-            m_itemSpeed = 0;
+            Destroy(gameObject);
         }
         Destroy(this.gameObject, m_healItemLifeTime);
     }

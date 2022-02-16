@@ -12,10 +12,10 @@ GameObject:
   - component: {fileID: 4783162784014701884}
   - component: {fileID: 6376669456140956023}
   - component: {fileID: 2080168473842409958}
-  - component: {fileID: 3634871228778273093}
   - component: {fileID: 2473238274978511896}
+  - component: {fileID: 8779495180357306818}
   m_Layer: 0
-  m_Name: Healitem
+  m_Name: BossBattleHealItem
   m_TagString: Heal
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -95,21 +95,6 @@ SphereCollider:
   serializedVersion: 2
   m_Radius: 0.5
   m_Center: {x: 0, y: 0, z: 0}
---- !u!114 &3634871228778273093
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1809383191459168106}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 70b95e159c0796342b2368ed881e5d35, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  m_itemSpeed: 40
-  m_healItemLifeTime: 20
-  m_boss: {fileID: 3462013089322138168, guid: cfba8fdd722047c40b529eb48ae79f22, type: 3}
 --- !u!54 &2473238274978511896
 Rigidbody:
   m_ObjectHideFlags: 0
@@ -126,3 +111,18 @@ Rigidbody:
   m_Interpolate: 0
   m_Constraints: 112
   m_CollisionDetection: 0
+--- !u!114 &8779495180357306818
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1809383191459168106}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 0dc88a1b25436324a8a38bed076e17f3, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_itemSpeed: 40
+  m_healItemLifeTime: 20
+  m_boss: {fileID: 3462013089322138168, guid: cfba8fdd722047c40b529eb48ae79f22, type: 3}

@@ -27,7 +27,7 @@ public class PlayerController : MonoBehaviour
     
     [Header("Status")]
     [SerializeField] float m_playerSpeed = 10f;
-    [SerializeField] public float m_playerHp = 0;
+    [SerializeField] public float m_playerHp = 0f;
     //[SerializeField] bool isOutRange = true;//playerの移動範囲の制御
     bool m_isPlayerMoved = true;
     

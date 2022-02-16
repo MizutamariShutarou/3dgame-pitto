@@ -46,6 +46,10 @@ public class BossBattleItemSpawn : MonoBehaviour
         {
             Destroy(gameObject);
         }
+        if(!PlayerController.Instance.IsPlayerMoved)
+        {
+            Destroy(gameObject);
+        }
 
     }
     private float GetRandomTime()
@@ -60,8 +64,5 @@ public class BossBattleItemSpawn : MonoBehaviour
 
         return new Vector3(x, y, z);
     }
-    //void Death()//wjfwehfe9wcwえｐｊ０
-    //{
-    //    Destroy(gameObject);
-    //}
+
 }

@@ -11,7 +11,7 @@ public class BulletController : MonoBehaviour
     //List<GameObject> m_enemyList = new List<GameObject>();
     [SerializeField] float m_homingSpeed = 0;
     [SerializeField] float m_distance = 0;
-
+    
     [SerializeField] float m_radius = 5.0f;
 
     [SerializeField] LayerMask m_enemyLayer = default;
@@ -25,7 +25,6 @@ public class BulletController : MonoBehaviour
     }
     private void Update()
     {
-
         Collider[] targets = Physics.OverlapSphere(transform.position,m_radius,m_enemyLayer);
         foreach (var enemys in targets)
         {
@@ -42,6 +41,10 @@ public class BulletController : MonoBehaviour
             }
         }
         Destroy(this.gameObject, m_bulletLifeTime);
+        if(!PlayerController.Instance.IsPlayerMoved)
+        {
+            Destroy(gameObject);
+        }
     }
 
     // Update is called once per frame

@@ -176,7 +176,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e5dccce64654acd4a9c0fd1e1c896391, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  m_itemPrefab: {fileID: 1809383191459168106, guid: 3aeec11cb5970424ebc8ac24685aaabb,
+  m_itemPrefab: {fileID: 1809383191459168106, guid: 0e815f8d314ed4a4fa305bea1917d14b,
     type: 3}
   m_minTime: 5
   m_maxTime: 5

@@ -40,10 +40,11 @@ public class BossEnemySpawn : MonoBehaviour
             StartCoroutine("SpawnEnemys");
             AppearEnemys();
         }
-        else if (m_boss != null && BossController.Instance.m_bossHp <= 0)
+        if(m_boss != BossController.Instance.m_bossHp <= 0 || !PlayerController.Instance.IsPlayerMoved)
         {
             Destroy(gameObject);
         }
+        
 
     }
 

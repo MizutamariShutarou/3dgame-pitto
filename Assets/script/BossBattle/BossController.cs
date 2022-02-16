@@ -59,11 +59,12 @@ public class BossController : MonoBehaviour
     private void Awake()
     {
         Instance = this;
+        //m_bossRb.transform.Rotate(new Vector3(0, 2f, 0));
     }
     //Start is called before the first frame update
     void Start()
     {
-        m_spChargeValue = GameManager.Instance.m_spValue;
+        //m_spChargeValue = GameManager.Instance.m_spValue;
         m_bossBulletSpeed = GameManager.Instance.m_bulletSpeed;
         m_bossRb = GetComponent<Rigidbody>();
         m_player = GameObject.Find("Player");
@@ -96,6 +97,10 @@ public class BossController : MonoBehaviour
         if (m_bossHp <= 0)
         {
             Destroy(gameObject);
+        }
+        if (!PlayerController.Instance.IsPlayerMoved)
+        {
+            StopCoroutine("BulletShot");
         }
     }
 

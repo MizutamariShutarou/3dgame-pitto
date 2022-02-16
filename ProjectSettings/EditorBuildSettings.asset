@@ -4,5 +4,20 @@
 EditorBuildSettings:
   m_ObjectHideFlags: 0
   serializedVersion: 2
-  m_Scenes: []
+  m_Scenes:
+  - enabled: 1
+    path: Assets/Scenes/Title.unity
+    guid: 11dfa33bf3c00c1419943da3be32e689
+  - enabled: 1
+    path: Assets/Scenes/Morning.unity
+    guid: 9fc0d4010bbf28b4594072e72b8655ab
+  - enabled: 1
+    path: Assets/Scenes/Evening.unity
+    guid: 69b0c30acaad1774c898a1819d4332c2
+  - enabled: 1
+    path: Assets/Scenes/Night.unity
+    guid: 4e5a004565d73e94ebd23269f511ed2a
+  - enabled: 1
+    path: Assets/Scenes/BossBatlle.unity
+    guid: 3c56fcdae260c29409baaa9d77edf628
   m_configObjects: {}

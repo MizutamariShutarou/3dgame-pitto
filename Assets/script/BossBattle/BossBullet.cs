@@ -22,6 +22,10 @@ public class BossBullet : MonoBehaviour
         {
             Destroy(gameObject);
         }
+        if(!PlayerController.Instance.IsPlayerMoved)
+        {
+            Destroy(gameObject);
+        }
     }
     private void OnTriggerEnter(Collider other)
     {

@@ -72,13 +72,18 @@ public class EnemyController : MonoBehaviour
 
         m_enemyRb.velocity = Vector3.back * m_enemySpeed;
 
-        if (m_player != null)//m_playerがnullじゃなければplayerの報を向く
+        if (m_player != null)//m_playerがnullじゃなければplayerを向く
         {
             transform.LookAt(m_player.transform);
         }
         if (transform.position.y >= m_destroyPos)
         {
             Destroy(this.gameObject);
+        }
+        if(!PlayerController.Instance.IsPlayerMoved)
+        {
+            StopCoroutine("BulletShot");
+            m_enemyRb.velocity = Vector3.back * 0;
         }
     }
 

@@ -17,12 +17,13 @@ public class BossBattleItem : MonoBehaviour
     void Update()
     {
         m_rb.velocity = Vector3.back * m_itemSpeed;
-        if (!PlayerController.Instance.IsPlayerMoved)
-        {
-            m_itemSpeed = 0;
-        }
+        
         Destroy(this.gameObject, m_healItemLifeTime);
         if (m_boss != null && BossController.Instance.m_bossHp <= 0)
+        {
+            Destroy(gameObject);
+        }
+        if(!PlayerController.Instance.IsPlayerMoved)
         {
             Destroy(gameObject);
         }
