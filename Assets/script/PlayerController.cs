@@ -118,6 +118,22 @@ public class PlayerController : MonoBehaviour
 
         Vector3 vec = new Vector3(h, v, 0);
         m_rb.velocity = vec.normalized * m_playerSpeed;
+        if(transform.localPosition.x > 14.69f)
+        {
+            transform.localPosition = new Vector3(-14.69f, transform.localPosition.y,transform.localPosition.z);
+        }
+        if(transform.localPosition.x < -14.69f)
+        {
+            transform.localPosition = new Vector3(14.69f, transform.localPosition.y, transform.localPosition.z);
+        }
+        if (transform.localPosition.y > 8.33f)
+        {
+            transform.localPosition = new Vector3(transform.localPosition.x, -8.33f, transform.localPosition.z);
+        }
+        if (transform.localPosition.y < -8.33f)
+        {
+            transform.localPosition = new Vector3(transform.localPosition.x, 8.33f, transform.localPosition.z);
+        }
         //if(SpecialGage.Instance.IsFulledSp)
         //{
         //    audioSource.PlayOneShot(m_specialCharged);
