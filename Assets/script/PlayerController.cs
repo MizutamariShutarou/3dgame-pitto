@@ -115,6 +115,7 @@ public class PlayerController : MonoBehaviour
     {
         float h = Input.GetAxisRaw("Horizontal");
         float v = Input.GetAxisRaw("Vertical");
+
         Vector3 vec = new Vector3(h, v, 0);
         m_rb.velocity = vec.normalized * m_playerSpeed;
         //if(SpecialGage.Instance.IsFulledSp)
