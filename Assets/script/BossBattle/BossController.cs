@@ -59,7 +59,6 @@ public class BossController : MonoBehaviour
     private void Awake()
     {
         Instance = this;
-        //m_bossRb.transform.Rotate(new Vector3(0, 2f, 0));
     }
     //Start is called before the first frame update
     void Start()
@@ -72,7 +71,7 @@ public class BossController : MonoBehaviour
         StartCoroutine("BulletShot");
 
         Sequence MoveSequence = DOTween.Sequence();
-        MoveSequence//よりランダム性を追加
+        MoveSequence
             .Append(this.transform.gameObject.GetComponent<Rigidbody>().DOMoveY(m_firstDoMoveYPos, m_firstDoMoveYTime))
             .Join(this.transform.gameObject.GetComponent<Rigidbody>().DOMoveX(m_firstDoMoveXPos, m_firstDoMoveXTime))
             .SetDelay(m_firstDelayTime)
@@ -97,6 +96,7 @@ public class BossController : MonoBehaviour
         if (m_bossHp <= 0)
         {
             Destroy(gameObject);
+            SceneChange.LoadScene("ClearScene");
         }
         if (!PlayerController.Instance.IsPlayerMoved)
         {
@@ -119,10 +119,6 @@ public class BossController : MonoBehaviour
         if (other.gameObject.CompareTag("Bullet"))
         {
             m_bossHp --;
-            if(m_bossHp <= 0)
-            {
-                SceneChange.LoadScene("ClearScene");
-            }
         }
     }
     //public void BossDestroy()

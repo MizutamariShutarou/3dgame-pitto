@@ -32,13 +32,12 @@ public class PlayerController : MonoBehaviour
 
     AudioSource audioSource;
 
-
     bool m_isReloaded;
     
     [Header("Status")]
     [SerializeField] float m_playerSpeed = 10f;
     [SerializeField] public float m_playerHp = 0f;
-    //[SerializeField] bool isOutRange = true;//playerの移動範囲の制御
+ 
     bool m_isPlayerMoved = true;
     
     [Header("BulletStatus")]
@@ -204,8 +203,8 @@ public class PlayerController : MonoBehaviour
         if (other.gameObject.CompareTag("EnemyBullet") || other.gameObject.CompareTag("BossBullet"))
         {
             audioSource.PlayOneShot(m_damege);
-            HPController.Instance.ChangeValue(m_hpChangeValue);
             m_playerHp -= m_hpChangeValue;
+            HPController.Instance.ChangeValue(+m_hpChangeValue);
         }
         else if (other.gameObject.CompareTag("Heal"))
         {

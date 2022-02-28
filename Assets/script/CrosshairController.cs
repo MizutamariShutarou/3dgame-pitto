@@ -7,9 +7,6 @@ public class CrosshairController : MonoBehaviour
 {
     [SerializeField] Vector3 m_targetPos;
     [SerializeField] Image m_aimImage;
-    //GameObject hitObj = default;
-    //GameObject m_player = default;
-    //GameObject m_wall = default;
     
     private void Start()
     {

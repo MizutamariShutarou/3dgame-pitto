@@ -109,7 +109,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_bossHp: 30
-  m_waitTime: 0.5
+  m_waitTime: 0
   m_bossBulletSpeed: 100
   m_firstDoMoveYPos: 230
   m_firstDoMoveYTime: 2

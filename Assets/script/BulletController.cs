@@ -28,8 +28,6 @@ public class BulletController : MonoBehaviour
         Collider[] targets = Physics.OverlapSphere(transform.position,m_radius,m_enemyLayer);
         foreach (var enemys in targets)
         {
-            //var t = targets.OrderBy(_ => Vector3.Distance(_.transform.position, transform.position)).FirstOrDefault();
-            //m_enemyMuzzle = t.gameObject;
             m_enemyMuzzle = enemys.gameObject;
         }
         if (m_enemyMuzzle != null)//nullじゃないときにホーミングする
@@ -47,7 +45,6 @@ public class BulletController : MonoBehaviour
         }
     }
 
-    // Update is called once per frame
     private void OnTriggerEnter(Collider collision)
     {
         if (collision.transform.CompareTag("Enemy") || m_enemyMuzzle != null && collision.transform.CompareTag("Muzzle"))
@@ -55,7 +52,6 @@ public class BulletController : MonoBehaviour
             Destroy(gameObject);
         }
     }
-
 
     private void OnDrawGizmosSelected()
     {

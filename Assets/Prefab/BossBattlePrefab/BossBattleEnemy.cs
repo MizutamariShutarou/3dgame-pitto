@@ -72,7 +72,7 @@ public class BossBattleEnemy : MonoBehaviour
         //if (transform.position.x > m_withinRange) isOutOfRange = true;
         //else isOutOfRange = false;
 
-        m_enemyRb.velocity = Vector3.back * m_enemySpeed;
+        //m_enemyRb.velocity = Vector3.back * m_enemySpeed;
 
         if (m_player != null)//m_playerがnullじゃなければplayerの報を向く
         {
@@ -82,6 +82,7 @@ public class BossBattleEnemy : MonoBehaviour
         {
             Destroy(this.gameObject);
         }
+        
     }
 
     IEnumerator BulletShot()

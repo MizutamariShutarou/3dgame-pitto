@@ -3,9 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using DG.Tweening;
 public class EnemyController : MonoBehaviour
-{
-    //[SerializeField] float m_withinRange = 0;
-    
+{   
     [Header("Status")]
     [SerializeField] float m_enemySpeed = 0f;
     [SerializeField] float m_waitTime = 0;
@@ -36,16 +34,11 @@ public class EnemyController : MonoBehaviour
     [SerializeField] GameObject m_stage = default;
     [SerializeField] float m_goalPos = 0;
     
-    
-    //bool isOutOfRange = true;
-    
     Rigidbody m_enemyRb = default;
-    //Start is called before the first frame update
     void Start()
-    {
+    { 
         m_spChargeValue = GameManager.Instance.m_spValue;
         m_enemyBulletSpeed = GameManager.Instance.m_bulletSpeed;
-        //isOutOfRange = false;
         m_enemyRb = GetComponent<Rigidbody>();
         m_player = GameObject.Find("Player");
         m_stage = GameObject.Find("Stage");
@@ -63,22 +56,16 @@ public class EnemyController : MonoBehaviour
             .Join(this.transform.gameObject.GetComponent<Rigidbody>().DOMoveX(Random.Range(-m_firstDoMoveXPos, m_firstDoMoveXPos), Random.Range(0, m_firstDoMoveXTime)).SetDelay(Random.Range(1, m_firstDelayTime))).SetRelative(true)
             .Append(this.transform.gameObject.GetComponent<Rigidbody>().DOMoveX(Random.Range(-m_doMoveXPos, m_doMoveXPos), Random.Range(-m_doMoveXTime, m_doMoveXTime)).SetDelay(Random.Range(1, m_secondDelayTime))).SetRelative(true)
             .Append(this.transform.DOMoveY(m_doMoveY, m_doMoveYTime).SetDelay(m_thirdDelayTime).SetLink(this.gameObject));
-
-        //DOTween.To(() => )
     }
-
-    //Update is called once per frame
     void Update()
     {
-        //if (transform.position.x > m_withinRange) isOutOfRange = true;
-        //else isOutOfRange = false;
-
         m_enemyRb.velocity = Vector3.back * m_enemySpeed;
 
         if (m_player != null)//m_playerがnullじゃなければplayerを向く
         {
             transform.LookAt(m_player.transform);
         }
+
         if (transform.position.y >= m_destroyPos)
         {
             EnemyDestroy();
@@ -118,7 +105,6 @@ public class EnemyController : MonoBehaviour
     public void EnemyDestroy()
     {
         Destroy(gameObject);
-        //Debug.Log("d");
     }
 
 

@@ -1111,6 +1111,11 @@ PrefabInstance:
       propertyPath: m_player
       value: 
       objectReference: {fileID: 6186591877980103974}
+    - target: {fileID: 7932741774861630381, guid: cfba8fdd722047c40b529eb48ae79f22,
+        type: 3}
+      propertyPath: m_waitTime
+      value: 0.5
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: cfba8fdd722047c40b529eb48ae79f22, type: 3}
 --- !u!1 &2095940153 stripped

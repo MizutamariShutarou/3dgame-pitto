@@ -8,10 +8,10 @@ public class HPController : MonoBehaviour
 {
     [SerializeField] public Slider m_hpSlider = default; 
     [SerializeField] float m_changeTime;
-    [SerializeField] float m_hpValue = 0;
+    //float m_hpValue = 0;
     public float HpValue { get; set; }
 
-    float m_hpMaxValue = 10f;
+    [SerializeField] float m_hpMaxValue = 10f;
 
     public static HPController Instance { get; private set; } = default;
     private void Awake()
@@ -27,8 +27,9 @@ public class HPController : MonoBehaviour
     void Start()
     {
         m_hpSlider = GameObject.Find("HpSlider").GetComponent<Slider>();
-        m_hpSlider.value = m_hpValue;
-        HpValue = m_hpValue;
+        m_hpSlider.value = PlayerController.Instance.m_playerHp;
+        HpValue = PlayerController.Instance.m_playerHp;
+        m_hpMaxValue = PlayerController.Instance.m_playerHp;
     }
 
     void Update()
