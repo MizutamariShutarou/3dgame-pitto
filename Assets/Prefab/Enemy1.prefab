@@ -14,6 +14,7 @@ GameObject:
   - component: {fileID: 218853559693336066}
   - component: {fileID: 218853559693336067}
   - component: {fileID: 218853559693336093}
+  - component: {fileID: 4824061945216044459}
   m_Layer: 8
   m_Name: Enemy1
   m_TagString: Enemy
@@ -146,6 +147,42 @@ MonoBehaviour:
   m_player: {fileID: 6186591876491466587, guid: 395fcfd255b65c441b66c3634bfef89b,
     type: 3}
   m_boss: {fileID: 3462013089322138168, guid: cfba8fdd722047c40b529eb48ae79f22, type: 3}
+  m_stage: {fileID: 6675633568522022382, guid: dca0e54a232272044a6a75c899445a2c, type: 3}
+  m_goalPos: -560
+--- !u!114 &4824061945216044459
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 218853559693336068}
+  m_Enabled: 0
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 1b23c52c66073bb4db3576c49a1bb23f, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_enemySpeed: 3
+  m_waitTime: 1.5
+  m_destroyPos: 90
+  m_breakPos: 90
+  m_spChargeValue: 10
+  m_enemyBulletSpeed: 40
+  m_firstDoMoveYPos: 10
+  m_firstDoMoveYTime: 2
+  m_firstDelayTime: 0
+  m_firstDoMoveXPos: 35
+  m_firstDoMoveXTime: 5
+  m_doMoveXPos: 10
+  m_doMoveXTime: 1
+  m_secondDelayTime: 5
+  m_doMoveY: 90
+  m_doMoveYTime: 3
+  m_thirdDelayTime: 3
+  m_enemyBullet: {fileID: 6417620424232066193, guid: 7553015e4af6d0d4ea60b31f86549363,
+    type: 3}
+  m_player: {fileID: 6186591876491466587, guid: 395fcfd255b65c441b66c3634bfef89b,
+    type: 3}
+  m_boss: {fileID: 0}
   m_stage: {fileID: 6675633568522022382, guid: dca0e54a232272044a6a75c899445a2c, type: 3}
   m_goalPos: -560
 --- !u!1001 &5007186245950007339
