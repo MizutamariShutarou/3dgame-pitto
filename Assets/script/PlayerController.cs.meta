@@ -3,7 +3,24 @@ guid: 9ba82c506d2242641864ae2e29b23ace
 MonoImporter:
   externalObjects: {}
   serializedVersion: 2
-  defaultReferences: []
+  defaultReferences:
+  - m_image: {instanceID: 0}
+  - m_playerRenderer: {instanceID: 0}
+  - m_muzzleRenderer: {instanceID: 0}
+  - m_boss: {instanceID: 0}
+  - effectPrefab: {instanceID: 0}
+  - m_healItem: {instanceID: 0}
+  - m_itemSpawnController: {instanceID: 0}
+  - m_gameManager: {instanceID: 0}
+  - m_fire1: {instanceID: 0}
+  - m_fire2: {instanceID: 0}
+  - m_space: {instanceID: 0}
+  - m_damege: {instanceID: 0}
+  - m_heal: {instanceID: 0}
+  - m_bullet: {instanceID: 0}
+  - m_muzzle: {instanceID: 0}
+  - m_ChargedSpecial: {fileID: 8374507756632766961, guid: c631e92cebc6d55468bebc17145ad026,
+      type: 3}
   executionOrder: 0
   icon: {instanceID: 0}
   userData: 

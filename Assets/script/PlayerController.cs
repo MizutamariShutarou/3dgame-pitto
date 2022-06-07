@@ -9,21 +9,15 @@ using UnityEngine.SceneManagement;
 public class PlayerController : MonoBehaviour
 {
     Rigidbody m_rb = default;
-    [SerializeField] Transform m_image;
     [SerializeField] Renderer m_playerRenderer;
     [SerializeField] Renderer m_muzzleRenderer;
     [SerializeField] GameObject[] m_enemys = default;
     [SerializeField] GameObject m_boss = default;
     [SerializeField] float m_spDamage = default;
-    //[SerializeField] GameObject m_enemyBullet = default;
-    [SerializeField] GameObject effectPrefab;
     [SerializeField] GameObject[] m_bulletIcon = default;
-    [SerializeField] GameObject m_healItem;
-    [SerializeField] ItemSpawnManager m_itemSpawnController = default;
     [SerializeField] float m_waitTime = 0;
-    [SerializeField] float m_reloadChangeValue = 0;
     [SerializeField] float m_hpChangeValue;
-    [SerializeField] GameManager m_gameManager;
+
     [SerializeField] public AudioClip m_fire1;
     [SerializeField] public AudioClip m_fire2;
     [SerializeField] public AudioClip m_space;
@@ -47,7 +41,9 @@ public class PlayerController : MonoBehaviour
     //[SerializeField] GameObject m_crosshair = default;
     [SerializeField] int m_maxBulletCount = 0;
     [SerializeField] int m_bulletCount = 10;
-    
+
+    [Header("Particle")]
+    [SerializeField] ParticleSystem m_ChargedSpecial;
     public bool IsPlayerMoved
     {
         get
@@ -109,6 +105,12 @@ public class PlayerController : MonoBehaviour
         {
             SceneChange.LoadScene("GameOverScene");
         }
+
+        if(SpecialGage.Instance.IsFulledSp)
+        {
+            //m_ChargedSpecial.SetActive(true);追加
+            m_ChargedSpecial.Play();//なぜかパーティクルが生成されない
+        }
     }
     void Move()
     {
@@ -165,6 +167,7 @@ public class PlayerController : MonoBehaviour
             if (SpecialGage.Instance.IsFulledSp)//100になったらtrueになって必殺技が打てる(撃った後はfalseに)
             {
                 audioSource.PlayOneShot(m_space);
+                Destroy(m_ChargedSpecial); //なぜかパーティクルが消えない
                 SpecialGage.Instance.ResetValue();
                 m_boss = GameObject.FindGameObjectWithTag("Boss");
                 m_enemys = GameObject.FindGameObjectsWithTag("Enemy");
@@ -175,6 +178,7 @@ public class PlayerController : MonoBehaviour
                     //GameObject effect = Instantiate(effectPrefab, e.transform.position, Quaternion.identity);
                     //Destroy(effect, 0.5f);
                 }
+             
                 if(m_boss != null)
                 {
                     //m_boss = GetComponent<BossController>().m_bossHp -= m_spDamage;

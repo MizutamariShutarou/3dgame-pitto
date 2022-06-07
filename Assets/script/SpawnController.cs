@@ -28,7 +28,6 @@ public class SpawnController : MonoBehaviour
     
     void Update()
     {
-        var random = Random.Range(0, m_enemys.Length - 1);
         if (enemysNum >= maxEnemysNum)
         {
             return;
@@ -61,9 +60,4 @@ public class SpawnController : MonoBehaviour
             //if (m_stage.transform.position.z < m_stageEnd) yield break; //Debug.Log("打ち終わり");
         }
     }
-
-    //public void SpawnDestroy()
-    //{
-    //    Destroy(gameObject);
-    //}
 }
