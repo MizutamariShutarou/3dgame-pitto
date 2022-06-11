@@ -31,13 +31,6 @@ public class HPController : MonoBehaviour
         HpValue = PlayerController.Instance.m_playerHp;
         m_hpMaxValue = PlayerController.Instance.m_playerHp;
     }
-
-    void Update()
-    {
-        
-    }
-
-
     public void ChangeValue(float value)
     {
         HpValue -= value;
