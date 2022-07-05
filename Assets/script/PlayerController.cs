@@ -153,7 +153,7 @@ public class PlayerController : MonoBehaviour
     }
     public void Fire2()//リロード
     {
-        if (Input.GetButtonDown("Fire2") && !m_isReloaded && m_bulletCount < m_maxBulletCount)
+        if (Input.GetKeyDown(KeyCode.R) && !m_isReloaded && m_bulletCount < m_maxBulletCount)
         {
             audioSource.PlayOneShot(m_fire2);
             StartCoroutine("StartReload");//ラグの開始
