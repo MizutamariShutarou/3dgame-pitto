@@ -8,7 +8,6 @@ public class BulletController : MonoBehaviour
     [SerializeField] float m_bulletLifeTime = 10f;
     [SerializeField] GameObject m_enemyMuzzle = default;
     [SerializeField] GameObject[] m_enemys;
-    //List<GameObject> m_enemyList = new List<GameObject>();
     [SerializeField] float m_homingSpeed = 0;
     [SerializeField] float m_distance = 0;
     
@@ -16,7 +15,6 @@ public class BulletController : MonoBehaviour
 
     [SerializeField] LayerMask m_enemyLayer = default;
 
-    // Start is called before the first frame update
     void Start()
     {
         m_radius = GameManager.Instance.m_homingRange;

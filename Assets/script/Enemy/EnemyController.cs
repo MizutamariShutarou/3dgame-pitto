@@ -44,13 +44,6 @@ public class EnemyController : MonoBehaviour
         m_stage = GameObject.Find("Stage");
         
         StartCoroutine("BulletShot");
-
-        //DOTween.Sequence()
-        //    .Append(this.transform.gameObject.GetComponent<Rigidbody>().DOMoveY(m_firstDoMoveYPos, m_firstDoMoveYTime)).SetRelative(true)
-        //    .Join(this.transform.gameObject.GetComponent<Rigidbody>().DOMoveX(m_firstDoMoveXPos,m_firstDoMoveXTime).SetDelay(m_firstDelayTime)).SetRelative(true)
-        //    .Append(this.transform.gameObject.GetComponent<Rigidbody>().DOMoveX(m_doMoveXPos, m_doMoveXTime).SetDelay(m_secondDelayTime)).SetRelative(true)
-        //    .Append(this.transform.DOMoveY(m_doMoveY, m_doMoveYTime).SetDelay(m_thirdDelayTime).SetLink(this.gameObject));
-
         DOTween.Sequence()//よりランダム性を追加
             .Append(this.transform.gameObject.GetComponent<Rigidbody>().DOMoveY(Random.Range(-m_firstDoMoveYPos,m_firstDoMoveYPos), Random.Range(0, m_firstDoMoveYTime)).SetRelative(true))
             .Join(this.transform.gameObject.GetComponent<Rigidbody>().DOMoveX(Random.Range(-m_firstDoMoveXPos, m_firstDoMoveXPos), Random.Range(0, m_firstDoMoveXTime)).SetDelay(Random.Range(1, m_firstDelayTime))).SetRelative(true)
@@ -69,6 +62,7 @@ public class EnemyController : MonoBehaviour
         if (transform.position.y >= m_destroyPos)
         {
             EnemyDestroy();
+            //逃がした敵をカウントしたい
         }
         
         if(!PlayerController.Instance.IsPlayerMoved)

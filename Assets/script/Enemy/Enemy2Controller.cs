@@ -2,6 +2,9 @@
 using System.Collections.Generic;
 using UnityEngine;
 using DG.Tweening;
+/// <summary>
+/// ランダムな方向に弾を撃つEnemy
+/// </summary>
 public class Enemy2Controller : MonoBehaviour
 {   
     [Header("Status")]
@@ -33,10 +36,13 @@ public class Enemy2Controller : MonoBehaviour
     [SerializeField] GameObject m_boss = default;
     [SerializeField] GameObject m_stage = default;
     [SerializeField] float m_goalPos = 0;
-    
+    Quaternion _rotation = Quaternion.identity;
+    [SerializeField] int _angle;
+    [SerializeField] int _addAngle;
+
     Rigidbody m_enemyRb = default;
     void Start()
-    { 
+    {
         m_spChargeValue = GameManager.Instance.m_spValue;
         m_enemyBulletSpeed = GameManager.Instance.m_bulletSpeed;
         m_enemyRb = GetComponent<Rigidbody>();
@@ -44,12 +50,6 @@ public class Enemy2Controller : MonoBehaviour
         m_stage = GameObject.Find("Stage");
         
         StartCoroutine("BulletShot");
-
-        //DOTween.Sequence()
-        //    .Append(this.transform.gameObject.GetComponent<Rigidbody>().DOMoveY(m_firstDoMoveYPos, m_firstDoMoveYTime)).SetRelative(true)
-        //    .Join(this.transform.gameObject.GetComponent<Rigidbody>().DOMoveX(m_firstDoMoveXPos,m_firstDoMoveXTime).SetDelay(m_firstDelayTime)).SetRelative(true)
-        //    .Append(this.transform.gameObject.GetComponent<Rigidbody>().DOMoveX(m_doMoveXPos, m_doMoveXTime).SetDelay(m_secondDelayTime)).SetRelative(true)
-        //    .Append(this.transform.DOMoveY(m_doMoveY, m_doMoveYTime).SetDelay(m_thirdDelayTime).SetLink(this.gameObject));
 
         DOTween.Sequence()//よりランダム性を追加
             .Append(this.transform.gameObject.GetComponent<Rigidbody>().DOMoveY(Random.Range(-m_firstDoMoveYPos,m_firstDoMoveYPos), Random.Range(0, m_firstDoMoveYTime)).SetRelative(true))
@@ -60,11 +60,6 @@ public class Enemy2Controller : MonoBehaviour
     void Update()
     {
         m_enemyRb.velocity = Vector3.back * m_enemySpeed;
-
-        if (m_player != null)//m_playerがnullじゃなければplayerを向く
-        {
-            transform.LookAt(m_player.transform);
-        }
 
         if (transform.position.y >= m_destroyPos)
         {
@@ -85,11 +80,13 @@ public class Enemy2Controller : MonoBehaviour
 
     IEnumerator BulletShot()
     {
-        while (true)
+        while(true)
         {
+            _rotation.eulerAngles = new Vector3(0, _angle, 0);
+            _angle += _addAngle;
+            transform.rotation = _rotation;
             yield return new WaitForSeconds(m_waitTime);
-            Rigidbody obj = Instantiate(m_enemyBullet, transform.position, Quaternion.identity).GetComponent<Rigidbody>();
-            obj.velocity = transform.rotation * Vector3.forward * m_enemyBulletSpeed;
+            Instantiate(m_enemyBullet, transform.position, _rotation);
             if (transform.position.y > m_breakPos) yield break; //打ち終わり
         }
     }

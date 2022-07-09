@@ -113,8 +113,6 @@ MonoBehaviour:
   m_enemys: []
   m_homingSpeed: 200
   m_distance: 10
-  m_player: {fileID: 6186591876491466587, guid: 395fcfd255b65c441b66c3634bfef89b,
-    type: 3}
   m_radius: 10
   m_enemyLayer:
     serializedVersion: 2

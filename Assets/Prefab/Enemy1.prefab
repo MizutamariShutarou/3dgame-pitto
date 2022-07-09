@@ -161,8 +161,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 1b23c52c66073bb4db3576c49a1bb23f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  m_enemySpeed: 3
-  m_waitTime: 1.5
+  m_enemySpeed: 6
+  m_waitTime: 0.3
   m_destroyPos: 90
   m_breakPos: 90
   m_spChargeValue: 10
@@ -178,13 +178,15 @@ MonoBehaviour:
   m_doMoveY: 90
   m_doMoveYTime: 3
   m_thirdDelayTime: 3
-  m_enemyBullet: {fileID: 6417620424232066193, guid: 7553015e4af6d0d4ea60b31f86549363,
+  m_enemyBullet: {fileID: 8960060655181209419, guid: fd6246e9686a12c4ba262869d3fd7003,
     type: 3}
   m_player: {fileID: 6186591876491466587, guid: 395fcfd255b65c441b66c3634bfef89b,
     type: 3}
   m_boss: {fileID: 0}
   m_stage: {fileID: 6675633568522022382, guid: dca0e54a232272044a6a75c899445a2c, type: 3}
   m_goalPos: -560
+  _angle: 0
+  _addAngle: 30
 --- !u!1001 &5007186245950007339
 PrefabInstance:
   m_ObjectHideFlags: 0
