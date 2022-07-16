@@ -106,10 +106,9 @@ public class PlayerController : MonoBehaviour
             SceneChange.LoadScene("GameOverScene");
         }
 
-        if(SpecialGage.Instance.IsFulledSp)
+        if(SpecialGage.Instance.SpecialValue < 100)
         {
-            //m_ChargedSpecial.SetActive(true);追加
-            m_ChargedSpecial.Play();//なぜかパーティクルが生成されない
+            m_ChargedSpecial.Play();
         }
     }
     void Move()
@@ -167,7 +166,7 @@ public class PlayerController : MonoBehaviour
             if (SpecialGage.Instance.IsFulledSp)//100になったらtrueになって必殺技が打てる(撃った後はfalseに)
             {
                 audioSource.PlayOneShot(m_space);
-                Destroy(m_ChargedSpecial); //なぜかパーティクルが消えない
+                m_ChargedSpecial.Stop();
                 SpecialGage.Instance.ResetValue();
                 m_boss = GameObject.FindGameObjectWithTag("Boss");
                 m_enemys = GameObject.FindGameObjectsWithTag("Enemy");
