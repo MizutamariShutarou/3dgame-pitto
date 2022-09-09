@@ -19,7 +19,6 @@ public class BulletController : MonoBehaviour
     {
         m_radius = GameManager.Instance.m_homingRange;
         Rigidbody rb = GetComponent<Rigidbody>();
-        m_enemyMuzzle = GameObject.Find("Muzzle");
     }
     private void Update()
     {
