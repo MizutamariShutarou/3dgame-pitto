@@ -1689,6 +1689,11 @@ PrefabInstance:
       objectReference: {fileID: 8300000, guid: e00ed0101270db74788364d15d5f51cd, type: 3}
     - target: {fileID: 6186591876491466657, guid: 395fcfd255b65c441b66c3634bfef89b,
         type: 3}
+      propertyPath: m_Enabled
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6186591876491466657, guid: 395fcfd255b65c441b66c3634bfef89b,
+        type: 3}
       propertyPath: m_playerHp
       value: 10
       objectReference: {fileID: 0}
