@@ -98,7 +98,7 @@ public class BossController : MonoBehaviour
             Destroy(gameObject);
             SceneChange.LoadScene("ClearScene");
         }
-        if (!PlayerController.Instance.IsPlayerMoved)
+        if (!Player_Model.Instance.IsPlayerMoved)
         {
             StopCoroutine("BulletShot");
         }

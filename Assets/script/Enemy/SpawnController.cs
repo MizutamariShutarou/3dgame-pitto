@@ -38,7 +38,7 @@ public class SpawnController : MonoBehaviour
             StartCoroutine("SpawnEnemys");
             AppearEnemys();
         }
-        if(PlayerController.Instance.m_playerHp <= 0 || m_stage.transform.position.z < m_stageEnd)
+        if(Player_Model.Instance.m_playerHp <= 0 || m_stage.transform.position.z < m_stageEnd)
         {
             StopCoroutine("SpawnEnemys");
         }

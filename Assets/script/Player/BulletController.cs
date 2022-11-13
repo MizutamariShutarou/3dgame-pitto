@@ -36,7 +36,7 @@ public class BulletController : MonoBehaviour
             }
         }
         Destroy(this.gameObject, m_bulletLifeTime);
-        if(!PlayerController.Instance.IsPlayerMoved)
+        if(!Player_Model.Instance.IsPlayerMoved)
         {
             Destroy(gameObject);
         }

@@ -66,7 +66,7 @@ public class Enemy2Controller : MonoBehaviour
             EnemyDestroy();
         }
         
-        if(!PlayerController.Instance.IsPlayerMoved)
+        if(!Player_Model.Instance.IsPlayerMoved)
         {
             StopCoroutine("BulletShot");
             m_enemyRb.velocity = Vector3.back * 0;

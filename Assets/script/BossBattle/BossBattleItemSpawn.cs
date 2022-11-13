@@ -46,7 +46,7 @@ public class BossBattleItemSpawn : MonoBehaviour
         {
             Destroy(gameObject);
         }
-        if(!PlayerController.Instance.IsPlayerMoved)
+        if(!Player_Model.Instance.IsPlayerMoved)
         {
             Destroy(gameObject);
         }

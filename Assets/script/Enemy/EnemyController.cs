@@ -65,7 +65,7 @@ public class EnemyController : MonoBehaviour
             //逃がした敵をカウントしたい
         }
         
-        if(!PlayerController.Instance.IsPlayerMoved)
+        if(!Player_Model.Instance.IsPlayerMoved)
         {
             StopCoroutine("BulletShot");
             m_enemyRb.velocity = Vector3.back * 0;

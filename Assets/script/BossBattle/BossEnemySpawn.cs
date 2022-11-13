@@ -40,7 +40,7 @@ public class BossEnemySpawn : MonoBehaviour
             StartCoroutine("SpawnEnemys");
             AppearEnemys();
         }
-        if(m_boss != BossController.Instance.m_bossHp <= 0 || !PlayerController.Instance.IsPlayerMoved)
+        if(m_boss != BossController.Instance.m_bossHp <= 0 || !Player_Model.Instance.IsPlayerMoved)
         {
             StopCoroutine("SpawnEnwmy");
         }
