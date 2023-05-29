@@ -23,7 +23,7 @@ public class BossBattleItem : MonoBehaviour
         {
             Destroy(gameObject);
         }
-        if(!Player_Model.Instance.IsPlayerMoved)
+        if(!PlayerController.Instance.IsPlayerMoved)
         {
             Destroy(gameObject);
         }

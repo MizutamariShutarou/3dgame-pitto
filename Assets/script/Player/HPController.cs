@@ -27,9 +27,9 @@ public class HPController : MonoBehaviour
     void Start()
     {
         m_hpSlider = GameObject.Find("HpSlider").GetComponent<Slider>();
-        m_hpSlider.value = Player_Model.Instance.m_playerHp;
-        HpValue = Player_Model.Instance.m_playerHp;
-        m_hpMaxValue = Player_Model.Instance.m_playerHp;
+        m_hpSlider.value = PlayerController.Instance.m_playerHp;
+        HpValue = PlayerController.Instance.m_playerHp;
+        m_hpMaxValue = PlayerController.Instance.m_playerHp;
     }
     public void ChangeValue(float value)
     {

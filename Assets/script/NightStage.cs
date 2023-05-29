@@ -21,7 +21,7 @@ public class NightStage : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if (Player_Model.Instance.IsPlayerMoved)
+        if (PlayerController.Instance.IsPlayerMoved)
         {
             m_stageRb.velocity = Vector3.back * m_stageSpeed;
             //if (m_stage.transform.position.z < m_startStageRotationPos)
@@ -29,7 +29,7 @@ public class NightStage : MonoBehaviour
             //    m_stageRb.angularVelocity = new Vector3(-0.f, 0, 0);
             //}
         }
-        else if (!Player_Model.Instance.IsPlayerMoved)
+        else if (!PlayerController.Instance.IsPlayerMoved)
         {
             m_stageRb.velocity = m_stageRb.transform.position.normalized * 0;
             m_stageRb.angularVelocity = Vector3.zero;

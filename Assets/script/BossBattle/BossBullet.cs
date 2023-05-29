@@ -22,7 +22,7 @@ public class BossBullet : MonoBehaviour
         {
             Destroy(gameObject);
         }
-        if(!Player_Model.Instance.IsPlayerMoved)
+        if(!PlayerController.Instance.IsPlayerMoved)
         {
             Destroy(gameObject);
         }

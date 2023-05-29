@@ -16,7 +16,7 @@ public class HealItemController : MonoBehaviour
     void Update()
     {
         m_rb.velocity = Vector3.back * m_itemSpeed;
-        if(!Player_Model.Instance.IsPlayerMoved)
+        if(!PlayerController.Instance.IsPlayerMoved)
         {
             Destroy(gameObject);
         }

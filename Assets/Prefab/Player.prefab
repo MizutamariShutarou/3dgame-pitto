@@ -110,7 +110,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 9ba82c506d2242641864ae2e29b23ace, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  m_image: {fileID: 0}
   m_playerRenderer: {fileID: 6186591876491466660}
   m_muzzleRenderer: {fileID: 6186591876911545823}
   m_enemys:
@@ -125,7 +124,6 @@ MonoBehaviour:
   - {fileID: 7581179548974899709, guid: 046ab7c2e0945f345bb45f61baeb7c07, type: 3}
   m_boss: {fileID: 3462013089322138168, guid: cfba8fdd722047c40b529eb48ae79f22, type: 3}
   m_spDamage: 10
-  effectPrefab: {fileID: 0}
   m_bulletIcon:
   - {fileID: 0}
   - {fileID: 0}
@@ -137,13 +135,8 @@ MonoBehaviour:
   - {fileID: 0}
   - {fileID: 0}
   - {fileID: 0}
-  m_healItem: {fileID: 1809383191459168106, guid: 3aeec11cb5970424ebc8ac24685aaabb,
-    type: 3}
-  m_itemSpawnController: {fileID: 0}
   m_waitTime: 1
-  m_reloadChangeValue: 1
   m_hpChangeValue: 1
-  m_gameManager: {fileID: 0}
   m_fire1: {fileID: 0}
   m_fire2: {fileID: 0}
   m_space: {fileID: 0}
@@ -157,6 +150,8 @@ MonoBehaviour:
   m_muzzle: {fileID: 6186591877853728906}
   m_maxBulletCount: 10
   m_bulletCount: 10
+  m_ChargedSpecial: {fileID: 8374507756632766961, guid: c631e92cebc6d55468bebc17145ad026,
+    type: 3}
 --- !u!54 &6186591876491466662
 Rigidbody:
   m_ObjectHideFlags: 0
